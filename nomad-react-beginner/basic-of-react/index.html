@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <title>react counter - Nomad</title>
+  <!-- react: Engine, Interactive UI 제공 -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <!-- react-dom: react element 들을 HTML 에 주입하는 역할 -->
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 </head>
 <body>
-
+<div id="root"></div>
 </body>
+<script>
+  // React 특징: 모든 html 관련 요소들을 js 로 모두 표현
+  const root = document.getElementById("root");
+  const span = React.createElement(
+    "span",
+    {
+      id: "test-span",
+      style: { color: "red" },
+    },
+    "Hello I'm a span"
+  );
+  ReactDOM.render(span, root);
+</script>
 </html>
