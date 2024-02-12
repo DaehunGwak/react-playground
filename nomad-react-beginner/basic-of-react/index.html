@@ -13,14 +13,22 @@
 <script>
   // React 특징: 모든 html 관련 요소들을 js 로 모두 표현
   const root = document.getElementById("root");
-  const span = React.createElement(
-    "span",
+  const h3 = React.createElement(
+    "h3",
     {
-      id: "test-span",
-      style: { color: "red" },
+      onMouseEnter: () => console.log("mouse enter")
     },
     "Hello I'm a span"
   );
-  ReactDOM.render(span, root);
+  const btn = React.createElement(
+    "button",
+    {
+      onClick: () => console.log("im clicked"),
+    },
+    "Click me"
+  );
+  const container = React.createElement("div", null, [h3, btn]);
+
+  ReactDOM.render(container, root);
 </script>
 </html>
