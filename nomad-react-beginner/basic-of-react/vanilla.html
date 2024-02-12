@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>vanilla counter - Nomad</title>
+  </head>
+  <body>
+    <span>Total clicks: 0</span>
+    <button id="btn">Click me</button>
+  </body>
+  <script>
+    let counter = 0;
+    const span = document.querySelector("span");
+
+    function handleClick() {
+      counter++;
+      span.innerText = `Total clicks: ${counter}`;
+    }
+
+    const button = document.getElementById("btn");
+    button.addEventListener("click", handleClick);
+  </script>
+</html>
