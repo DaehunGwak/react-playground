@@ -12,40 +12,30 @@
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
-  /**
-   * React 특징: 모든 html 관련 요소들을 js 로 모두 표현
-   * JSX: javascript extension (아래 문법을 지원) https://ko.legacy.reactjs.org/docs/introducing-jsx.html
-   * Babel: javascript compiler for current and older browsers https://babeljs.io/setup#installation
-   * - Babel 여기에서 JSX 문법 지원을 위해 사용
-   */
+  let counter = 0;
 
-  // React.createElement > JSX 스타일로 대체
-  function Title() {
+  function countUp() {
+    counter++;
+    console.log(counter);
+    render();
+  }
+
+  function render() {
+    // react 는 변경된 부분만 감지해서 DOM 에 반영됨
+    // render 되는 모든 컴포넌트가 모두 DOM 에 새롭게 반영되는 것이 아님
+    ReactDOM.render(<Container/>, root);
+  }
+
+  function Container() {
     return (
-      <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
-        Hello I'm a title
-      </h3>
+      <div>
+        <h3>Total clicks: {counter}</h3>
+        <button onClick={countUp}>Click me</button>
+      </div>
     );
   }
 
-  const Button = () => (
-    <button
-      style={{backgroundColor: "tomato"}}
-      onClick={() => console.log("im clicked")}
-    >
-      Click me
-    </button>
-  );
-
-  // Component 는 대문자로 시작 하는 것이 React 관행
-  const Container = () => (
-    <div>
-      <Title />
-      <Button />
-    </div>
-  );
-
   const root = document.getElementById("root");
-  ReactDOM.render(<Container />, root);
+  render();
 </script>
 </html>
