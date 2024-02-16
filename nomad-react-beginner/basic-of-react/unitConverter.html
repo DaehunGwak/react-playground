@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Unit Converter - Nomad</title>
+</head>
+<body>
+<div id="root"></div>
+</body>
+<!-- react: Engine, Interactive UI 제공 -->
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<!-- react-dom: react element 들을 HTML 에 주입하는 역할 -->
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  function App() {
+    const [minutes, setMinutes] = React.useState(0);
+
+    const convertToHours = (event) => {
+      setMinutes(event.target.value);
+    }
+
+    const reset = () => {
+      setMinutes(0);
+    }
+
+    return (
+      <div>
+        <h1 className="hi">Super Converter</h1>
+        <div>
+          <label htmlFor="minutes">Minutes</label>
+          <input
+            value={minutes}
+            onChange={convertToHours}
+            id="minutes"
+            placeholder="Minutes"
+            type="number"
+          />
+        </div>
+        <div>
+          <label htmlFor="hours">Hours</label>
+          <input
+            value={minutes / 60}
+            id="hours"
+            placeholder="Hours"
+            type="number"
+            disabled
+          />
+        </div>
+        <button onClick={reset}>Reset</button>
+      </div>
+    );
+  }
+
+  const root = document.getElementById("root");
+  ReactDOM.render(<App/>, root);
+</script>
+</html>
