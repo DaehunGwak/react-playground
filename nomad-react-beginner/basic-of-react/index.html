@@ -12,21 +12,19 @@
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
-  let counter = 0;
+  const root = document.getElementById("root");
 
-  function countUp() {
-    counter++;
-    console.log(counter);
-    render();
-  }
+  /**
+   * 왜 modifier 를 통해서 state 를 수정해야 하는가?
+   * - useState 에서 제공해주는 modifier 는 dom rerender 를 제공함
+   */
+  function App() {
+    const [counter, setCounter] = React.useState(0);
 
-  function render() {
-    // react 는 변경된 부분만 감지해서 DOM 에 반영됨
-    // render 되는 모든 컴포넌트가 모두 DOM 에 새롭게 반영되는 것이 아님
-    ReactDOM.render(<Container/>, root);
-  }
+    const countUp = () => {
+      setCounter(counter + 1);
+    }
 
-  function Container() {
     return (
       <div>
         <h3>Total clicks: {counter}</h3>
@@ -35,7 +33,6 @@
     );
   }
 
-  const root = document.getElementById("root");
-  render();
+  ReactDOM.render(<App/>, root);
 </script>
 </html>
