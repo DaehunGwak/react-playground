@@ -17,12 +17,17 @@
   /**
    * 왜 modifier 를 통해서 state 를 수정해야 하는가?
    * - useState 에서 제공해주는 modifier 는 dom rerender 를 제공함
+   *
+   * state 를 바꾸는 두가지 방법
+   * - useState 의 modifier + state 추출 변수 이용 (여러 곳에서 사용 가능해서 수정에 관련된 문제가 있을 수 있음)
+   * - useState 의 modifier + current function 이용 (위의 방법은 state 를 다른 곳에서 수정 가능)
    */
   function App() {
     const [counter, setCounter] = React.useState(0);
 
     const countUp = () => {
-      setCounter(counter + 1);
+      // setCounter(counter + 1);
+      setCounter((current) => current + 1); // 왜 이게 더 안전한가? 현재 상태를 react 에서 보장해줌
     }
 
     return (
