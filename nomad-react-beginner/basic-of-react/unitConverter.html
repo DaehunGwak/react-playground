@@ -13,15 +13,15 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
   function App() {
-    const [minutes, setMinutes] = React.useState(0);
+    const [amount, setAmount] = React.useState(0);
+    const [flipped, setFlipped] = React.useState(false);
 
-    const convertToHours = (event) => {
-      setMinutes(event.target.value);
-    }
-
-    const reset = () => {
-      setMinutes(0);
-    }
+    const changeAmount = (event) => setAmount(event.target.value);
+    const reset = () => setAmount(0);
+    const flip = () => {
+      reset();
+      setFlipped((current) => !current)
+    };
 
     return (
       <div>
@@ -29,24 +29,27 @@
         <div>
           <label htmlFor="minutes">Minutes</label>
           <input
-            value={minutes}
-            onChange={convertToHours}
+            value={flipped ? (amount * 60) : amount}
+            onChange={changeAmount}
             id="minutes"
             placeholder="Minutes"
             type="number"
+            disabled={flipped}
           />
         </div>
         <div>
           <label htmlFor="hours">Hours</label>
           <input
-            value={minutes / 60}
+            value={flipped ? amount : (amount / 60)}
+            onChange={changeAmount}
             id="hours"
             placeholder="Hours"
             type="number"
-            disabled
+            disabled={!flipped}
           />
         </div>
         <button onClick={reset}>Reset</button>
+        <button onClick={flip}>Flip</button>
       </div>
     );
   }
