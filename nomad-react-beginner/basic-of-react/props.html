@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Unit Converter - Nomad</title>
+</head>
+<body>
+<div id="root"></div>
+</body>
+<!-- react: Engine, Interactive UI 제공 -->
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<!-- react-dom: react element 들을 HTML 에 주입하는 역할 -->
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  function MyButton({text, big}) {
+    console.log(text);
+    return (
+      <button
+        style={{
+          backgroundColor: "tomato",
+          color: "white",
+          padding: big ? "15px 25px" : "10px 20px",
+          border: 0,
+          borderRadius: 10,
+        }}
+      >
+        {text}
+      </button>
+    );
+  }
+
+  function App() {
+    return (
+      <div>
+        <MyButton text="Save Changes" big={true}/>
+        <MyButton text="Continue" big={false}/>
+      </div>
+    );
+  }
+
+  const root = document.getElementById("root");
+  ReactDOM.createRoot(root).render(<App/>);
+</script>
+</html>
