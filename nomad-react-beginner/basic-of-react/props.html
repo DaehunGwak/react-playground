@@ -11,13 +11,15 @@
 <!-- react-dom: react element 들을 HTML 에 주입하는 역할 -->
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
 <script type="text/babel">
-  function MyButton({text, onClick}) {
+  function MyButton({text, onClick, fontSize = 16}) {
     console.log(text, "rendered");
     return (
       <button
         onClick={onClick}
         style={{
+          fontSize: fontSize,
           backgroundColor: "tomato",
           color: "white",
           padding: "10px 20px",
@@ -32,6 +34,12 @@
 
   const MyMemorizedButton = React.memo(MyButton);
 
+  MyButton.propTypes = {
+    text: PropTypes.string.isRequired,
+    onClick: PropTypes.func,
+    fontSize: PropTypes.number,
+  }
+
   function App() {
     const [text, setText] = React.useState("Save Changes");
 
@@ -39,8 +47,14 @@
 
     return (
       <div>
-        <MyMemorizedButton text={text} onClick={changeText}/>
-        <MyMemorizedButton text="Continue" />
+        <div>
+          <MyMemorizedButton text={text} onClick={changeText}/>
+          <MyMemorizedButton text="Continue"/>
+        </div>
+        <div>
+          <MyMemorizedButton text="first" fontSize={18}/>
+          <MyMemorizedButton text="second" fontSize={10}/>
+        </div>
       </div>
     );
   }
