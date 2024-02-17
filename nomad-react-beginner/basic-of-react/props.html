@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Unit Converter - Nomad</title>
+  <title>Props - Nomad</title>
 </head>
 <body>
 <div id="root"></div>
@@ -12,14 +12,15 @@
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
-  function MyButton({text, big}) {
-    console.log(text);
+  function MyButton({text, onClick}) {
+    console.log(text, "rendered");
     return (
       <button
+        onClick={onClick}
         style={{
           backgroundColor: "tomato",
           color: "white",
-          padding: big ? "15px 25px" : "10px 20px",
+          padding: "10px 20px",
           border: 0,
           borderRadius: 10,
         }}
@@ -29,11 +30,17 @@
     );
   }
 
+  const MyMemorizedButton = React.memo(MyButton);
+
   function App() {
+    const [text, setText] = React.useState("Save Changes");
+
+    const changeText = () => setText("Revert Changes");
+
     return (
       <div>
-        <MyButton text="Save Changes" big={true}/>
-        <MyButton text="Continue" big={false}/>
+        <MyMemorizedButton text={text} onClick={changeText}/>
+        <MyMemorizedButton text="Continue" />
       </div>
     );
   }
