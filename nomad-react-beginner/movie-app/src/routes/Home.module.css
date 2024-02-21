@@ -1,0 +1,32 @@
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.loader {
+  width: 100%;
+  height: 100vh; /*vh? vertical height? viewport 비율: 1당 1%
+  자매품 vw: vertical width
+  https://developer.mozilla.org/ko/docs/Learn/CSS/Building_blocks/Values_and_units*/
+  display: flex;
+  justify-content: center; /*세로*/
+  align-items: center; /*가로*/
+  font-weight: 300;
+}
+
+.movies {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(400px, 1fr));
+  grid-gap: 100px;
+  width: 80%;
+  padding: 70px 50px 50px;
+}
+
+/*반응 형으로 1090px 보다 작아지만 아래를 적용하라 라는 의미인 듯*/
+@media screen and (max-width: 1090px) {
+  .movies {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+}

@@ -6,15 +6,15 @@ function Detail() {
   const {id} = useParams();
   const [movie, setMovie] = useState();
 
-  const fetchMovieDetail = async () => {
-    const response = await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`);
-    const json = await response.json();
-    setMovie(json.data.movie);
-  }
-
   useEffect(() => {
+    const fetchMovieDetail = async () => {
+      const response = await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`);
+      const json = await response.json();
+      setMovie(json.data.movie);
+    }
+
     fetchMovieDetail();
-  }, []);
+  }, [id]);
 
   return (
     <div>
@@ -28,6 +28,7 @@ function Detail() {
             coverImage={movie.medium_cover_image}
             id={movie.id}
             title={movie.title}
+            year={movie.year}
           />
       }
     </div>
