@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html data-theme="dark">
+<head>
+  <title>Calculator - React Nomad</title>
+  <meta charset="UTF-8"/>
+  <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css"
+  />
+  <style>
+    body {
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    h2 {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  function App() {
+    const [number1, setNumber1] = React.useState();
+    const [number2, setNumber2] = React.useState();
+    const [operation, setOperation] = React.useState("nothing");
+    const [result, setResult] = React.useState();
+
+    const changeNumber1 = (event) => setNumber1(parseInt(event.target.value));
+
+    const changeNumber2 = (event) => setNumber2(parseInt(event.target.value));
+
+    const changeOperation = (event) => setOperation(event.target.value);
+
+    const calculate = () => {
+      switch (operation) {
+        case "+":
+          return number1 + number2;
+        case "-":
+          return number1 - number2;
+        case "/":
+          return number1 / number2;
+        case "*":
+          return number1 * number2;
+        case "nothing":
+        default:
+          return "Please select operation..";
+      }
+    }
+
+    const calculateResult = () => setResult(calculate());
+
+    return (
+      <div className="container">
+        <h1>🔥 Calculator 🔥</h1>
+        <input
+          type="number"
+          value={number1}
+          onChange={changeNumber1}
+          placeholder="👉🏻 Write a number"
+        />
+        <input
+          type="number"
+          value={number2}
+          onChange={changeNumber2}
+          placeholder="👉🏻 And another one"
+        />
+        <select value={operation} onChange={changeOperation}>
+          <option value="nothing">👉🏻 Select operation</option>
+          <option>+</option>
+          <option>-</option>
+          <option>/</option>
+          <option>*</option>
+        </select>
+        <button onClick={calculateResult}>Calculate</button>
+        {
+          result === undefined
+            ? null
+            : (
+              typeof result === "string"
+                ? <h2>{result}</h2>
+                : <h2>The result is: {result}</h2>
+            )
+        }
+      </div>
+    );
+  }
+
+  const root = document.getElementById("root");
+  ReactDOM.render(<App/>, root);
+</script>
+</html>
