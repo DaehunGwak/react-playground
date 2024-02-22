@@ -1,6 +1,6 @@
-# nomad typescript-of-beginner note
+# Nomad typescript-of-beginner course note
 
-## installation commands of typescript on npm project
+## Commands of typescript on npm project
 
 ```sh
 npm init --yes # init npm project
