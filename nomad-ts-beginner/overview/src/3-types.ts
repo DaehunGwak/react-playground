@@ -22,6 +22,8 @@ const person2: Person = {
 if (person2.age! < 10) { 
 }
 
+const personMaker = (name: string): Person => ({name});
+
 function personFrom(name: string): Person {
     return {
         name,
