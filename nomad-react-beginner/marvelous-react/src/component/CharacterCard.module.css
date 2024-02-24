@@ -1,0 +1,30 @@
+.container {
+  width: 270px;
+  height: 360px;
+  margin: 32px;
+  border-radius: 50px;
+  background: #e0e0e0;
+  box-shadow:  30px 30px 65px #bebebe,
+    -30px -30px 65px #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container img {
+  width: 180px;
+  height: 240px;
+  margin-top: 6px;
+  border-radius: 16px;
+  background-color: #bebebe;
+  clip: auto;
+  object-fit: cover;
+}
+
+.container span {
+  margin-top: 24px;
+  margin-bottom: 0;
+  font-size: 18px;
+  font-weight: 400;
+}
