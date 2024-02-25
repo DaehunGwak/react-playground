@@ -1,0 +1,14 @@
+.externalContainer {
+  margin: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.contentsContainer {
+  margin: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
