@@ -18,3 +18,9 @@
   justify-content: center;
   margin-top: 16px;
 }
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
