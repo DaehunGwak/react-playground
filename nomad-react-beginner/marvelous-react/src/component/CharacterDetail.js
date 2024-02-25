@@ -2,8 +2,9 @@ import CharacterDetailImage from "./detail/CharacterDetailImage";
 import CharacterDetailLinkButton from "./detail/CharacterDetailLinkButton";
 import styles from "./CharacterDetail.module.css";
 import CharacterDetailContents from "./detail/CharacterDetailContents";
+import CharacterDetailDescription from "./detail/CharacterDetailDescription";
 
-function CharacterDetail({name, imageUrl, externalLinks, series, comics, stories}) {
+function CharacterDetail({name, imageUrl, externalLinks, description, series, comics, stories, events}) {
   return (
     <div>
       <CharacterDetailImage
@@ -19,7 +20,22 @@ function CharacterDetail({name, imageUrl, externalLinks, series, comics, stories
             />)
         }
       </div>
+      <div className={styles.descriptionContainer}>
+        {
+          (description !== undefined && description.length > 0)
+            ? <CharacterDetailDescription description={description} />
+            : null
+        }
+      </div>
       <div className={styles.contentsContainer}>
+        {
+          events.length === 0
+            ? null
+            : <CharacterDetailContents
+              title="Events"
+              contents={events.map((e) => e.name)}
+            />
+        }
         {
           series.length === 0
             ? null
@@ -29,7 +45,7 @@ function CharacterDetail({name, imageUrl, externalLinks, series, comics, stories
             />
         }
         {
-          series.length === 0
+          comics.length === 0
             ? null
             : <CharacterDetailContents
               title="Comics"
@@ -37,7 +53,7 @@ function CharacterDetail({name, imageUrl, externalLinks, series, comics, stories
             />
         }
         {
-          series.length === 0
+          stories.length === 0
             ? null
             : <CharacterDetailContents
               title="Stories"

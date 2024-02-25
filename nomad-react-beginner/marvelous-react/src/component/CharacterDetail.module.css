@@ -1,5 +1,12 @@
 .externalContainer {
-  margin: 12px;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.descriptionContainer {
   display: flex;
   flex-direction: row;
   justify-content: center;

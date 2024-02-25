@@ -4,6 +4,7 @@ import {fetchJson} from "../util/api";
 import Loading from "../component/Loading";
 import CharacterDetail from "../component/CharacterDetail";
 import styles from "./CharacterDetailPage.module.css";
+import {removeTagAndEscape} from "../util/string";
 
 const CHARACTER_DETAIL_API_URL = "https://marvel-proxy.nomadcoders.workers.dev/v1/public/characters/";
 
@@ -28,9 +29,12 @@ function CharacterDetailPage() {
             name={character.name}
             imageUrl={`${character.thumbnail.path}.${character.thumbnail.extension}`}
             externalLinks={character.urls}
+            description={removeTagAndEscape(character.description)}
+            // description={character.description}
             series={character.series === undefined ? [] : character.series.items}
             comics={character.comics === undefined ? [] : character.comics.items}
             stories={character.stories === undefined ? [] : character.stories.items}
+            events={character.events === undefined ? [] : character.events.items}
           />
       }
     </div>
