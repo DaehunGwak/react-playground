@@ -1,0 +1,25 @@
+.container {
+  position: relative;
+  text-align: center;
+  color: dimgrey;
+}
+
+.thumbnailImage {
+  width: 100vw;
+  height: 50vh;
+  object-fit: cover;
+  filter: opacity(50%);
+  background-color: white;
+}
+
+.name {
+  color: rgba(6, 6, 6, 0.85);
+  text-shadow: 5px 5px 8px rgba(222, 222, 222, 0.5);
+  font-size: 100px;
+  font-weight: 900;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

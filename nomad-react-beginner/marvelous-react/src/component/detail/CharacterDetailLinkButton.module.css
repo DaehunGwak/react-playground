@@ -1,0 +1,21 @@
+.button {
+  margin-right: 12px;
+  padding: 16px;
+  border-style: solid;
+  border-radius: 20px;
+  border-width: 1px;
+  border-color: #d0d0d0;
+  background-color: #e0e0e0;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.button:hover {
+  background-color: #d0d0d0;
+}
+
+.button span {
+  color: inherit;
+  font-size: 16px;
+  font-weight: 500;
+}
