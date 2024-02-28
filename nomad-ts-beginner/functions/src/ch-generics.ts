@@ -37,14 +37,13 @@ console.log(findIndex(["a", "bcd", "e"], "bcde"));
 // 받은 인덱스까지 자른 결과를 반환하면됩니다. 이때 세번째 매개변수는 필수 매개변수가 아닙니다.
 type Slice = <T>(arr: T[], startIndex: number, endIndex?: number) => T[];
 const slice: Slice = (arr, startIndex, endIndex) => {
-  if (startIndex < 0 || (endIndex != null && endIndex >= arr.length)) {
+  const nonNullEndIndex = endIndex ?? (arr.length - 1);
+  if (startIndex < 0 || nonNullEndIndex >= arr.length) {
     throw new RangeError(
       `Out of range: (array length: ${arr.length}, startIndex: ${startIndex}, endIndex: ${endIndex})`
     );
   }
-  return endIndex == null
-    ? arr.slice(startIndex)
-    : arr.slice(startIndex, endIndex + 1);
+  return arr.slice(startIndex, nonNullEndIndex + 1);
 }
 // console.log(slice([0, 1, 2, 3, 4, 5], 1, 10)); // Out of range RangeError
 // console.log(slice([0, 1, 2, 3, 4, 5], -2, 3)); // Out of range RangeError
