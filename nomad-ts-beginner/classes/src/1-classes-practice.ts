@@ -23,12 +23,16 @@ class Dict {
   getDef(term: string) {
     return this.words[term];
   }
+
+  static hello() {
+    return "Hello";
+  }
 }
 
 class Word {
   constructor(
-    public term: string,
-    public def: string
+    public readonly term: string,
+    public readonly def: string
   ) {
   }
 }
@@ -38,3 +42,5 @@ const kimchi = new Word("kimchi", "한국의 음식");
 
 dict.add(kimchi);
 console.log(dict.getDef("kimchi"));
+
+Dict.hello();
