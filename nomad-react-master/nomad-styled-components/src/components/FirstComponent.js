@@ -17,7 +17,7 @@ const Text = styled.span`
   color: white;
 `;
 
-function App() {
+function FirstComponent() {
   return (
     <Father>
       <TealBox>
@@ -28,4 +28,4 @@ function App() {
   );
 }
 
-export default App;
+export default FirstComponent;

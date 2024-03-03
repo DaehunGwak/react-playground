@@ -1,8 +1,12 @@
 import FirstComponent from "./components/FirstComponent";
+import AdaptingExtending from "./components/AdaptingExtending";
 
 function App() {
   return (
-    <FirstComponent />
+    <div>
+      <FirstComponent />
+      <AdaptingExtending />
+    </div>
   );
 }
 
