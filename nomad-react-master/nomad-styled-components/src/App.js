@@ -1,9 +1,9 @@
-import Animations from "./components/Animations";
+import PseudoSelector from "./components/PseudoSelector";
 
 function App() {
   return (
     <div>
-      <Animations />
+      <PseudoSelector/>
     </div>
   );
 }
