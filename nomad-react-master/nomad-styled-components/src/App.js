@@ -1,13 +1,9 @@
-import FirstComponent from "./components/FirstComponent";
-import AdaptingExtending from "./components/AdaptingExtending";
-import AsAndAttrs from "./components/AsAndAttrs";
+import Animations from "./components/Animations";
 
 function App() {
   return (
     <div>
-      <FirstComponent />
-      <AdaptingExtending />
-      <AsAndAttrs />
+      <Animations />
     </div>
   );
 }
