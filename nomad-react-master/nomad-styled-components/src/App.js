@@ -1,10 +1,8 @@
-import PseudoSelector from "./components/PseudoSelector";
+import Themes from "./components/Themes";
 
 function App() {
   return (
-    <div>
-      <PseudoSelector/>
-    </div>
+    <Themes/>
   );
 }
 
