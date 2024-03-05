@@ -1,9 +1,12 @@
 import React from 'react';
-import StyledComponentsIntegration from "./components/StyledComponentsIntegration";
+import Circle from "./components/Circle";
 
 function App() {
   return (
-    <StyledComponentsIntegration />
+    <div>
+      <Circle backgroundColor="teal"/>
+      <Circle backgroundColor="tomato"/>
+    </div>
   );
 }
 
