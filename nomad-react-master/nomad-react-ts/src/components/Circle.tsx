@@ -1,11 +1,14 @@
 import styled from "styled-components";
 
 interface ContainerProps {
-  $backgroundColor: string
+  $backgroundColor: string;
+  $borderColor?: string;
 }
 
 interface CircleProps {
-  backgroundColor: string
+  backgroundColor: string;
+  borderColor?: string;
+  text?: string;
 }
 
 /**
@@ -22,28 +25,24 @@ interface CircleProps {
 //
 const Container = styled.div<ContainerProps>`
   background-color: ${(props) => props.$backgroundColor};
+  border: 2px solid ${(props) => props.$borderColor};
   width: 100px;
   height: 100px;
   border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
-function Circle({backgroundColor}: CircleProps) {
+function Circle({backgroundColor, borderColor, text}: CircleProps) {
   return (
-    <Container $backgroundColor={backgroundColor}/>
+    <Container
+      $backgroundColor={backgroundColor}
+      $borderColor={borderColor ?? "none"}
+    >
+      {text}
+    </Container>
   );
 }
 
 export default Circle;
-
-
-// learned
-// interface PlayerShape {
-//   name: string,
-//   age: number,
-// }
-//
-// const sayHello = (playerObj: PlayerShape) =>
-//   `Hello ${playerObj.name} (age: ${playerObj.age})`;
-//
-// sayHello({name: "daehun", age:20});
-// sayHello({name: "wrong", age:20, hi: "somthing"}); // type error
