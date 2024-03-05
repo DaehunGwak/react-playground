@@ -1,4 +1,16 @@
 import React, {useState} from "react";
+import styled from "styled-components";
+
+const Input = styled.input`
+  background-color: ${(props) => props.theme.bgColor};
+  color: ${(props) => props.theme.textColor};
+  border-color: ${(props) => props.theme.textColor};
+`;
+
+const Button = styled.button`
+  background-color: ${(props) => props.theme.btnColor};
+  color: ${(props) => props.theme.textColor};
+`;
 
 export default function Form() {
   const [username, setUsername] = useState("");
@@ -16,12 +28,12 @@ export default function Form() {
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <input
+        <Input
           onChange={onChange}
           type="text"
           placeholder="username"
         />
-        <button>Log in</button>
+        <Button>Log in</Button>
       </form>
     </div>
   );

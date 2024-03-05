@@ -1,4 +1,14 @@
 import {useState} from "react";
+import styled from "styled-components";
+
+const Text = styled.span`
+  color: ${(props) => props.theme.textColor};
+`;
+
+const Button = styled.button`
+  background-color: ${(props) => props.theme.btnColor};
+  color: ${(props) => props.theme.textColor}
+`;
 
 function Counter() {
   const [count, setCount] = useState<number>(0);
@@ -7,10 +17,10 @@ function Counter() {
 
   return (
     <div>
-      {count}
-      <button onClick={(_) => setCount(count + 1)}>
+      <Text>{count}</Text>
+      <Button onClick={(_) => setCount(count + 1)}>
         up
-      </button>
+      </Button>
     </div>
   );
 }
