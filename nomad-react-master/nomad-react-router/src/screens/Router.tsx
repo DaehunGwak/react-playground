@@ -5,6 +5,7 @@ import About from "./About";
 import NotFound from "./NotFound";
 import ErrorComponent from "../components/ErrorComponent";
 import User from "./users/User";
+import Followers from "./users/Followers";
 
 const router = createBrowserRouter([
   // container
@@ -24,7 +25,13 @@ const router = createBrowserRouter([
       },
       {
         path: "users/:userId",
-        element: <User/>
+        element: <User/>,
+        children: [
+          {
+            path: "followers",
+            element: <Followers/>
+          }
+        ]
       }
     ],
   }
