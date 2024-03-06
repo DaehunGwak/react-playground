@@ -3,13 +3,14 @@ import {users} from "../../data/mock";
 
 function User() {
   const {userId} = useParams();
+  const user = users[Number(userId) - 1];
 
   return (
     <div>
-      <h1>User with id {userId} is named: {users[Number(userId) - 1].name}</h1>
+      <h1>User with id {userId} is named: {user.name}</h1>
       <hr/>
       <Link to={"followers"}>See followers</Link>
-      <Outlet/>
+      <Outlet context={{userName: user.name}}/>
     </div>
   );
 }
