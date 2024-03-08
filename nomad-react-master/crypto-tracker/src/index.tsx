@@ -4,6 +4,7 @@ import {ThemeProvider} from "styled-components";
 import {theme} from "./theme";
 import {RouterProvider} from "react-router-dom";
 import {router} from "./Router";
+import "./index.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
