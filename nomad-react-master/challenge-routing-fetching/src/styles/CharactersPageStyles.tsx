@@ -42,5 +42,5 @@ export const CharacterCardImage = styled.img`
   height: 100px;
   border-radius: 50px;
   margin-bottom: 12px;
-  clip: inherit;
+  object-fit: cover;
 `;
