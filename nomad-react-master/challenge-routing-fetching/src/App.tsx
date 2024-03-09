@@ -1,20 +1,15 @@
-import React, {Fragment} from 'react';
-import {createGlobalStyle} from "styled-components";
+import React from 'react';
 import {ReactQueryDevtools} from "react-query/devtools";
+import {Outlet} from "react-router-dom";
+import {AppWrapper, GlobalStyle} from "./styles/CommonStyles";
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: ${(props) => props.theme.backgroundColor};
-    color: ${(props) => props.theme.textColor};
-  }
-`;
 function App() {
   return (
-    <Fragment>
+    <AppWrapper>
       <GlobalStyle/>
-      test
+      <Outlet/>
       <ReactQueryDevtools initialIsOpen={true}/>
-    </Fragment>
+    </AppWrapper>
   );
 }
 
