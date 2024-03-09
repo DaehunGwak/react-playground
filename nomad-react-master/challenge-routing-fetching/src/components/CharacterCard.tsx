@@ -9,7 +9,7 @@ interface CharacterCardProps {
 function CharacterCard({simpleCharacter}: CharacterCardProps) {
 
   return (
-    <Link to={`character/${simpleCharacter.id}`}>
+    <Link to={`character/${simpleCharacter.id}`} state={{simpleCharacter}}>
       <CharacterCardWrapper>
         <CharacterCardImage src={simpleCharacter.imageUrl}/>
         <CharactersText>{simpleCharacter.name}</CharactersText>
