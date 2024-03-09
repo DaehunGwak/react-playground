@@ -5,7 +5,7 @@ import {CoinResponse} from "../dto/CoinResponse";
 import {Container, Header, Loader, Title} from "../styles/CoinCommonStyles";
 import {Coin, CoinsUnorderedList, CoinWrapper, Img} from "../styles/CoinsStyles";
 
-function Coins() {
+function CoinsPage() {
   const [coins, setCoins] = useState<CoinResponse[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -45,4 +45,4 @@ function Coins() {
   );
 }
 
-export default Coins;
+export default CoinsPage;

@@ -31,3 +31,26 @@ export const CoinDetailCardTitle = styled.span`
 export const CoinDetailCardContent = styled.span`
   font-size: 1.5rem;
 `;
+
+export const TabWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  padding: 24px;
+`;
+
+export const Tab = styled.div<{$isActive: boolean}>`
+  flex: 1;
+  border-radius: 12px;
+  background-color: ${(props) => props.$isActive ? "#313131" : "#1f1f1f"};
+  text-align: center;
+  
+  a {
+    padding: 12px;
+    display: block;
+  }
+
+  &:hover {
+    background-color: #2f2f2f;
+  }
+`;

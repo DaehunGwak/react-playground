@@ -1,4 +1,4 @@
-import {useLocation, useParams} from "react-router-dom";
+import {Link, Outlet, useLocation, useMatch, useParams} from "react-router-dom";
 import {Container, Header, Loader, Title} from "../styles/CoinCommonStyles";
 import {useEffect, useState} from "react";
 import axios from "axios";
@@ -9,22 +9,24 @@ import {
   CoinDetailCardItem,
   CoinDetailCardTitle,
   CoinDetailCardWrapper,
-  CoinDetailWrapper
+  CoinDetailWrapper, Tab, TabWrapper
 } from "../styles/CoinStyles";
 
 type CoinPathParams = {
   coinId: string,
 }
 
-function Coin() {
+function CoinPage() {
   const {coinId} = useParams<CoinPathParams>();
 
   const [loading, setLoading] = useState<boolean>(false);
   const [coinDetail, setCoinDetail] = useState<CoinDetailResponse>();
   const [coinPrice, setCoinPrice] = useState<CoinPriceResponse>();
 
+  const pricePathMatch = useMatch(":coinId/price");
+  const chartPathMatch = useMatch(":coinId/chart");
 
-  const { state } = useLocation();
+  const {state} = useLocation();
   const simpleCoin = state?.simpleCoin;
 
   useEffect(() => {
@@ -40,7 +42,7 @@ function Coin() {
   return (
     <Container>
       <Header>
-        <Title>{simpleCoin?.name || "Unknown Coin"}</Title>
+        <Title>{simpleCoin?.name ?? coinDetail?.name ?? coinId}</Title>
       </Header>
       {
         loading
@@ -73,8 +75,18 @@ function Coin() {
             </CoinDetailCardWrapper>
           </CoinDetailWrapper>
       }
+      <TabWrapper>
+        <Tab $isActive={!!chartPathMatch}>
+          <Link to={"chart"}>Chart</Link>
+        </Tab>
+        <Tab $isActive={!!pricePathMatch}>
+          <Link to={"price"}>Price</Link>
+        </Tab>
+      </TabWrapper>
+
+      <Outlet/>
     </Container>
   );
 }
 
-export default Coin;
+export default CoinPage;
