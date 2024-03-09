@@ -1,6 +1,7 @@
 import {Outlet} from "react-router-dom";
 import {createGlobalStyle} from "styled-components";
 import {Fragment} from "react";
+import {ReactQueryDevtools} from "react-query/devtools";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -15,6 +16,7 @@ function App() {
     <Fragment>
       <GlobalStyle/>
       <Outlet/>
+      <ReactQueryDevtools initialIsOpen={true}/>
     </Fragment>
   );
 }
