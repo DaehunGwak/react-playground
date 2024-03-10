@@ -34,7 +34,6 @@ export const CharacterCardWrapper = styled.div`
       color: ${(props) => props.theme.backgroundColor};
     }
   }
-}
 `;
 
 export const CharacterCardImage = styled.img`
