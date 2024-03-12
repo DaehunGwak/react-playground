@@ -1,12 +1,12 @@
 import React from 'react';
 import {GlobalStyle} from "./styles/GlobalStyle";
-import WannaGoCountriesViewModel from "./view-models/WannaGoCountriesViewModel";
+import CountiesViewModel from "./view-models/CountiesViewModel";
 
 function App() {
   return (
     <>
       <GlobalStyle/>
-      <WannaGoCountriesViewModel/>
+      <CountiesViewModel/>
     </>
   );
 }
