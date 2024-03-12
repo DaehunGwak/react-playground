@@ -1,7 +1,8 @@
 import {Outlet} from "react-router-dom";
-import {createGlobalStyle} from "styled-components";
-import {Fragment} from "react";
+import {createGlobalStyle, ThemeProvider} from "styled-components";
 import {ReactQueryDevtools} from "react-query/devtools";
+import {darkTheme, lightTheme} from "./darkTheme";
+import {useState} from "react";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -10,14 +11,19 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-// Fragment: React 에서 제공하는 유령 태그
 function App() {
+  const [isDark, setIsDark] = useState(false);
+
+  const toggleTheme = () => setIsDark(current => !current);
+
   return (
-    <Fragment>
-      <GlobalStyle/>
-      <Outlet/>
-      <ReactQueryDevtools initialIsOpen={true}/>
-    </Fragment>
+    <>
+      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+        <GlobalStyle/>
+        <Outlet context={{ toggleTheme }}/>
+        <ReactQueryDevtools initialIsOpen={true}/>
+      </ThemeProvider>
+    </>
   );
 }
 
