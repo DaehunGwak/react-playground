@@ -2,14 +2,19 @@ import {ChangeEvent, FormEvent, useState} from "react";
 
 function ToDoList() {
   const [todo, setTodo] = useState("");
-
+  const [todoError, setTodoError] = useState("");
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     setTodo(event.currentTarget.value);
   }
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(todo);
+    if (todo.length < 10) {
+      setTodoError("To do should be longer");
+      return;
+    }
+    setTodoError("");
+    console.log(`submit: ${todo}`);
   }
 
   return (
@@ -23,6 +28,11 @@ function ToDoList() {
         />
         <button>Add</button>
       </form>
+      {
+        todoError.length > 0
+          ? todoError
+          : null
+      }
     </div>
   );
 }
