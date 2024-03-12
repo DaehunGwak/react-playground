@@ -1,24 +1,28 @@
-import {Link, useOutletContext} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {CoinResponse} from "../dto/CoinResponse";
 import {Container, Header, Loader, Title} from "../styles/CoinCommonStyles";
 import {Coin, CoinsUnorderedList, CoinWrapper} from "../styles/CoinsStyles";
 import {useQuery} from "react-query";
 import {fetchData} from "../repository/api";
-
-interface ThemeContextProps {
-  toggleTheme: () => void;
-}
+import {useSetRecoilState} from "recoil";
+import {isDarkAtom} from "../atoms";
 
 function CoinsPage() {
   const {isLoading, data} =
     useQuery("coinsApi", () => fetchData<CoinResponse[]>("https://api.coinpaprika.com/v1/coins"));
-  const {toggleTheme} = useOutletContext<ThemeContextProps>();
+  const setIsDark = useSetRecoilState(isDarkAtom);
+
+  const toggleIsDarkAtom = () => {
+    setIsDark((current) => !current);
+  };
 
   return (
     <Container>
       <Header>
         <Title>Coins</Title>
-        <button onClick={toggleTheme}>Toggle Theme</button>
+        <button onClick={toggleIsDarkAtom}>
+          Toggle Theme
+        </button>
       </Header>
       {
         isLoading
