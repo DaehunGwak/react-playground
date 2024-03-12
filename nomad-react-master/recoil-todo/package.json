@@ -1,5 +1,5 @@
 {
-  "name": "crypto-tracker",
+  "name": "recoil-todo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,6 +13,7 @@
     "axios": "^1.6.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.51.0",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.22.2",
     "react-scripts": "5.0.1",

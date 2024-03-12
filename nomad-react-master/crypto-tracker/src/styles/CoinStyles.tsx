@@ -7,7 +7,7 @@ export const CoinDetailWrapper = styled.div`
 `;
 
 export const CoinDetailCardWrapper = styled.div`
-  background-color: #1f1f1f;
+  background-color: white;
   border-radius: 16px;
   display: flex;
   flex-direction: row;
@@ -15,7 +15,7 @@ export const CoinDetailCardWrapper = styled.div`
 `;
 
 export const CoinDetailCardItem = styled.div`
-  color: whitesmoke;
+  color: black;
   display: flex;
   flex-direction: column;
   padding: 12px 24px;
@@ -42,7 +42,8 @@ export const TabWrapper = styled.div`
 export const Tab = styled.div<{$isActive: boolean}>`
   flex: 1;
   border-radius: 12px;
-  background-color: ${(props) => props.$isActive ? "#313131" : "#1f1f1f"};
+  background-color: ${(props) => props.$isActive ? "grey" : "white"};
+  color: black;
   text-align: center;
   
   a {
@@ -51,6 +52,6 @@ export const Tab = styled.div<{$isActive: boolean}>`
   }
 
   &:hover {
-    background-color: #2f2f2f;
+    background-color: lightgrey;
   }
 `;

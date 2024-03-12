@@ -1,7 +1,9 @@
 import {Outlet} from "react-router-dom";
-import {createGlobalStyle} from "styled-components";
-import {Fragment} from "react";
+import {createGlobalStyle, ThemeProvider} from "styled-components";
 import {ReactQueryDevtools} from "react-query/devtools";
+import {darkTheme, lightTheme} from "./darkTheme";
+import {useRecoilValue} from "recoil";
+import {isDarkAtom} from "./atoms";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -10,14 +12,17 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-// Fragment: React 에서 제공하는 유령 태그
 function App() {
+  const isDark = useRecoilValue(isDarkAtom);
+
   return (
-    <Fragment>
-      <GlobalStyle/>
-      <Outlet/>
-      <ReactQueryDevtools initialIsOpen={true}/>
-    </Fragment>
+    <>
+      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+        <GlobalStyle/>
+        <Outlet/>
+        <ReactQueryDevtools initialIsOpen={true}/>
+      </ThemeProvider>
+    </>
   );
 }
 

@@ -4,7 +4,7 @@ export const CoinsUnorderedList = styled.ul``;
 
 export const Coin = styled.li`
   background-color: white;
-  color: ${props => props.theme.bgColor};
+  color: black;
   border-radius: 10px;
   margin-bottom: 10px;
   
