@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import {motion} from "framer-motion";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(motion.div)`
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -11,7 +12,7 @@ export const Wrapper = styled.div`
   background: linear-gradient(135deg,tomato,#ff9999);
 `;
 
-export const Box = styled.div`
+export const Box = styled(motion.div)`
   width: 200px;
   height: 200px;
   background-color: white;
