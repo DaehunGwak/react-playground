@@ -1,24 +1,43 @@
 import React from 'react';
-import {Box, Wrapper} from "./styles/AppStyles";
+import {Box, Circle, Wrapper} from "./styles/AppStyles";
 
-const myVariants = {
-  start: { scale: 0 },
-  end: { // 이름 맘대로 가능
-    scale: 1,
-    rotateZ: 360,
+const boxVariants = {
+  start: {
+    opacity: 0,
+    scale: 0.5,
+  },
+  end: {
+    opacity: 1,
+    scale: 1.0,
     transition: {
-      delay: 1,
+      type: "tween",
       duration: 1,
-      type: "spring",
-      bounce: 0.25,
+      delayChildren: 0.5,
+      staggerChildren: 0.2,
     }
-  }
+  },
+}
+
+const circleVariants = {
+  start: {
+    opacity: 0,
+    y: -10,
+  },
+  end: {
+    opacity: 1,
+    y: 0,
+  },
 }
 
 function App() {
   return (
     <Wrapper>
-      <Box variants={myVariants} initial="start" animate="end"/>
+      <Box variants={boxVariants} initial="start" animate="end">
+        <Circle variants={circleVariants}/>
+        <Circle variants={circleVariants}/>
+        <Circle variants={circleVariants}/>
+        <Circle variants={circleVariants}/>
+      </Box>
     </Wrapper>
   );
 }
