@@ -1,4 +1,5 @@
-import {WhiteBox} from "../styles/AppStyles";
+import {BiggerBox, WhiteBox} from "../styles/AppStyles";
+import {useRef} from "react";
 
 const boxVariants = {
   hover: { scale: 2, rotateZ: 90, },
@@ -11,16 +12,24 @@ const boxVariants = {
   }
 };
 
+
 function GestureBox() {
+  const biggerBoxRef = useRef<HTMLDivElement>(null);
+
   return (
-    <WhiteBox
-      variants={boxVariants}
-      whileHover="hover"
-      whileTap="click"
-      whileDrag="drag"
-      drag
-    />
-  )
+    <BiggerBox ref={biggerBoxRef}>
+      <WhiteBox
+        variants={boxVariants}
+        whileHover="hover"
+        whileTap="click"
+        whileDrag="drag"
+        drag
+        dragConstraints={biggerBoxRef}
+        dragSnapToOrigin
+        dragElastic={1}
+      />
+    </BiggerBox>
+  );
 }
 
 export default GestureBox;

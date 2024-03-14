@@ -39,3 +39,14 @@ export const WhiteBox = styled(motion.div)`
   background-color: white;
   box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.1);
 `;
+
+export const BiggerBox = styled.div`
+  width: 600px;
+  height: 600px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+`;
