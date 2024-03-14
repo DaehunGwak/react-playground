@@ -1,0 +1,43 @@
+import {Box, Circle} from "../styles/AppStyles";
+import React from "react";
+
+const boxVariants = {
+  start: {
+    opacity: 0,
+    scale: 0.5,
+  },
+  end: {
+    opacity: 1,
+    scale: 1.0,
+    transition: {
+      type: "tween",
+      duration: 1,
+      delayChildren: 0.5,
+      staggerChildren: 0.2,
+    }
+  },
+}
+
+const circleVariants = {
+  start: {
+    opacity: 0,
+    y: -10,
+  },
+  end: {
+    opacity: 1,
+    y: 0,
+  },
+}
+
+function variantsBox() {
+  return (
+    <Box variants={boxVariants} initial="start" animate="end">
+      <Circle variants={circleVariants}/>
+      <Circle variants={circleVariants}/>
+      <Circle variants={circleVariants}/>
+      <Circle variants={circleVariants}/>
+    </Box>
+  );
+}
+
+export default variantsBox;
