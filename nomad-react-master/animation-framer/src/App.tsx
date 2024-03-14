@@ -1,11 +1,11 @@
 import React from 'react';
 import {Wrapper} from "./styles/AppStyles";
-import VariantsBox from "./components/VariantsBox";
+import GestureBox from "./components/GestureBox";
 
 function App() {
   return (
     <Wrapper>
-      <VariantsBox/>
+      <GestureBox/>
     </Wrapper>
   );
 }

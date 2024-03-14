@@ -31,3 +31,11 @@ export const Circle = styled(motion.div)`
   background-color: white;
   box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.1);
 `;
+
+export const WhiteBox = styled(motion.div)`
+  width: 200px;
+  height: 200px;
+  border-radius: 35px;
+  background-color: white;
+  box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.1);
+`;
