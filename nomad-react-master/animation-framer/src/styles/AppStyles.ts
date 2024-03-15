@@ -9,6 +9,7 @@ export const Wrapper = styled(motion.div)`
   align-items: center;
   line-height: 1.2;
   color: black;
+  background: linear-gradient(135deg, tomato, #ff9999);
 `;
 
 export const LongWrapper = styled(motion.div)`
@@ -58,4 +59,15 @@ export const BiggerBox = styled.div`
   align-items: center;
   justify-content: center;
   overflow: hidden;
+`;
+
+export const Svg = styled.svg`
+  width: 300px;
+  height: 300px;
+  color: white;
+`;
+
+export const Path = styled(motion.path)`
+  stroke: white;
+  stroke-width: 5px;
 `;

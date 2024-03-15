@@ -1,11 +1,10 @@
 import React from 'react';
-import {Wrapper} from "./styles/AppStyles";
-import MotionValueBox from "./components/MotionValueBox";
+import SvgBox from "./components/SvgBox";
 
 function App() {
   return (
     <>
-      <MotionValueBox/>
+      <SvgBox/>
     </>
   );
 }

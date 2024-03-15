@@ -20,7 +20,7 @@ function MotionValueBox() {
 
   const logValue = (value: any) => console.log(value);
 
-  // useMotionValueEvent(scale, "change", logValue);
+  useMotionValueEvent(scale, "change", logValue);
   // useMotionValueEvent(rotateZ, "change", logValue);
   // useMotionValueEvent(gradient, "change", logValue);
   useMotionValueEvent(scrollYProgress, "change", logValue);
