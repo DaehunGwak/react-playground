@@ -9,7 +9,16 @@ export const Wrapper = styled(motion.div)`
   align-items: center;
   line-height: 1.2;
   color: black;
-  background: linear-gradient(135deg,tomato,#ff9999);
+`;
+
+export const LongWrapper = styled(motion.div)`
+  height: 200vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.2;
+  color: black;
 `;
 
 export const Box = styled(motion.div)`

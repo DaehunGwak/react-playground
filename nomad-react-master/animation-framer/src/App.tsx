@@ -4,9 +4,9 @@ import MotionValueBox from "./components/MotionValueBox";
 
 function App() {
   return (
-    <Wrapper>
+    <>
       <MotionValueBox/>
-    </Wrapper>
+    </>
   );
 }
 

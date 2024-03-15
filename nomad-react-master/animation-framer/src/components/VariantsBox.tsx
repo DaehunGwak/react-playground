@@ -1,4 +1,4 @@
-import {Box, Circle} from "../styles/AppStyles";
+import {Box, Circle, Wrapper} from "../styles/AppStyles";
 import React from "react";
 
 const boxVariants = {
@@ -31,12 +31,14 @@ const circleVariants = {
 
 function variantsBox() {
   return (
-    <Box variants={boxVariants} initial="start" animate="end">
-      <Circle variants={circleVariants}/>
-      <Circle variants={circleVariants}/>
-      <Circle variants={circleVariants}/>
-      <Circle variants={circleVariants}/>
-    </Box>
+    <Wrapper>
+      <Box variants={boxVariants} initial="start" animate="end">
+        <Circle variants={circleVariants}/>
+        <Circle variants={circleVariants}/>
+        <Circle variants={circleVariants}/>
+        <Circle variants={circleVariants}/>
+      </Box>
+    </Wrapper>
   );
 }
 
