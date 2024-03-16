@@ -1,10 +1,10 @@
 import React from 'react';
-import AnimatePresenceBox from "./components/AnimatePresenceBox";
+import SliderBox from "./components/SliderBox";
 
 function App() {
   return (
     <>
-      <AnimatePresenceBox/>
+      <SliderBox/>
     </>
   );
 }
