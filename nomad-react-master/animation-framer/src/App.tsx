@@ -1,10 +1,10 @@
 import React from 'react';
-import SliderBox from "./components/SliderBox";
+import LayoutBox from "./components/LayoutBox";
 
 function App() {
   return (
     <>
-      <SliderBox/>
+      <LayoutBox/>
     </>
   );
 }
