@@ -1,10 +1,10 @@
 import React from 'react';
-import LayoutBox from "./components/LayoutBox";
+import LayoutSelectedBox from "./components/LayoutSelectedBox";
 
 function App() {
   return (
     <>
-      <LayoutBox/>
+      <LayoutSelectedBox/>
     </>
   );
 }
