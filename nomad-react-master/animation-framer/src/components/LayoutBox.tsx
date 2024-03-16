@@ -6,9 +6,9 @@ export const Wrapper = styled(motion.div)`
   height: 100vh;
   width: 100vw;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   background: linear-gradient(135deg, tomato, #ff9999);
 `;
 
@@ -18,13 +18,14 @@ const Box = styled(motion.div)`
   height: 300px;
   background-color: white;
   display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Circle = styled(motion.div)`
   background-color: #00a5ff;
   height: 50px;
   width: 50px;
-  border-radius: 25px;
 `;
 
 // layout property 를 활성화 하면 자동으로 css 변화를 감지해 타겟이 애니메이팅됨
@@ -34,11 +35,11 @@ function LayoutBox() {
 
   return (
     <Wrapper onClick={toggleClicked}>
-      <Box style={{
-        justifyContent: clicked ? "center" : "flex-start",
-        alignItems: clicked ? "center" : "flex-start",
-      }}>
-        <Circle layout />
+      <Box>
+        {clicked ? null : <Circle layoutId="same-id" style={{borderRadius: "25px"}}/>}
+      </Box>
+      <Box>
+        {clicked ? <Circle layoutId="same-id" style={{borderRadius: 0, scale: 2}}/> : null}
       </Box>
     </Wrapper>
   );
