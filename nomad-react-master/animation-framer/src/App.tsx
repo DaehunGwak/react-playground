@@ -1,10 +1,10 @@
 import React from 'react';
-import SvgBox from "./components/SvgBox";
+import AnimatePresenceBox from "./components/AnimatePresenceBox";
 
 function App() {
   return (
     <>
-      <SvgBox/>
+      <AnimatePresenceBox/>
     </>
   );
 }
