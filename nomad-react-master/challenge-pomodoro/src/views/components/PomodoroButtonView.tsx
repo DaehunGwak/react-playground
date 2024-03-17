@@ -1,10 +1,23 @@
 import {ActionButton, ButtonSvg, PauseIconPath, PlayIconPath} from "../styles/PomodoroButtonStyle";
-import {useState} from "react";
+import {PomodoroTimerStatus} from "../../models/PomodoroTimer";
 
-function PomodoroButtonView() {
-  const [playing, setPlaying] = useState(false);
+interface PomodoroButtonViewProps {
+  status: PomodoroTimerStatus;
+  start: () => void;
+  pause: () => void;
+}
 
-  const togglePlaying = () => setPlaying(prev => !prev);
+function PomodoroButtonView({status, start, pause}: PomodoroButtonViewProps) {
+  const togglePlaying = () => {
+    switch (status) {
+      case PomodoroTimerStatus.PAUSE:
+        start();
+        break;
+      case PomodoroTimerStatus.PLAYING:
+        pause();
+        break;
+    }
+  };
 
   return (
     <ActionButton
@@ -13,7 +26,9 @@ function PomodoroButtonView() {
       onClick={togglePlaying}
     >
       <ButtonSvg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-        {playing ? <PauseIconPath/> : <PlayIconPath/>}
+        {status === PomodoroTimerStatus.PAUSE
+          ? <PlayIconPath/>
+          : <PauseIconPath/>}
       </ButtonSvg>
     </ActionButton>
   )

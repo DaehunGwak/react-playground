@@ -1,6 +1,7 @@
 import {TimerCard, TimerDivider, TimerWrapper} from "../styles/PomodoroTimerStyle";
-import {useEffect, useRef, useState} from "react";
 import {toTwoDigitsString} from "../../utils/numbers";
+
+const SECONDS_PER_A_MINUTE = 60;
 
 const cardVariants = {
   initial: {
@@ -16,37 +17,32 @@ const cardVariants = {
   }
 }
 
-function PomodoroTimerView() {
-  const [seconds, setSeconds] = useState(25 * 60);
-  const mounted = useRef(false);
+interface PomodoroTimerViewProps {
+  restSeconds: number;
+}
 
-  useEffect(() => {
-    if (mounted.current) {
-      setInterval(() => {
-        setSeconds(prev => prev - 1);
-      }, 1000);
-    }
-    mounted.current = true;
-  }, []);
+function PomodoroTimerView({restSeconds}: PomodoroTimerViewProps) {
+  const minutes = Math.floor(restSeconds  / SECONDS_PER_A_MINUTE);
+  const seconds = restSeconds % SECONDS_PER_A_MINUTE;
 
   return (
     <TimerWrapper>
       <TimerCard
-        key={`min-${Math.floor(seconds  / 60)}`}
+        key={`min-${minutes}`}
         variants={cardVariants}
         initial="initial"
         animate="animate"
       >
-        {toTwoDigitsString(Math.floor(seconds  / 60))}
+        {toTwoDigitsString(minutes)}
       </TimerCard>
       <TimerDivider>:</TimerDivider>
       <TimerCard
-        key={`sec-${seconds % 60}`}
+        key={`sec-${seconds}`}
         variants={cardVariants}
         initial="initial"
         animate="animate"
       >
-        {toTwoDigitsString(seconds % 60)}
+        {toTwoDigitsString(seconds)}
       </TimerCard>
     </TimerWrapper>
   )
