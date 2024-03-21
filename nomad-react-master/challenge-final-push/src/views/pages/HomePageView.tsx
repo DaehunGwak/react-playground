@@ -1,11 +1,12 @@
 import {Outlet} from "react-router-dom";
+import MovieHeaderView from "../components/MovieHeaderView";
+import CategorySelectorView from "../components/CategorySelectorView";
 
 function HomePageView() {
   return (
     <>
-      <div>title</div>
-      <div>search</div>
-      <div>menu</div>
+      <MovieHeaderView/>
+      <CategorySelectorView/>
       <Outlet/>
     </>
   );
