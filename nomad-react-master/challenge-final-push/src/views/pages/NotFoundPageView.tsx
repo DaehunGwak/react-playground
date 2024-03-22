@@ -19,7 +19,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: antiquewhite;
   color: rgb(0, 43, 0);
 `;
 

@@ -12,7 +12,9 @@ function SimpleMovieCardView({
   return (
     <CardWrapper
       layoutId={`movie-${id}`}
-      animate={isHovered ? {scale: 1.1} : undefined}
+      initial={{opacity: 0}}
+      animate={isHovered ? {scale: 1.15, opacity: 1} : {opacity: 1}}
+      transition={{duration: 0.6}}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -46,10 +48,12 @@ const CardImg = styled(motion.img)`
   object-fit: cover;
   border-radius: 12px;
   filter: grayscale(0.8);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2)
 `;
 
 const CardTitle = styled(motion.span)`
   font-size: 0.85rem;
   font-weight: 400;
   text-align: center;
+  line-height: 1.3;
 `;

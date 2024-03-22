@@ -13,7 +13,7 @@ function MovieHeaderView() {
 export default MovieHeaderView;
 
 const Wrapper = styled.header`
-  padding: 24px;
+  padding: 36px 24px 24px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -21,7 +21,7 @@ const Wrapper = styled.header`
 
 const Title = styled.h1`
   font-weight: bold;
-  font-size: 3rem;
+  font-size: 3.4rem;
   flex: 1;
   text-align: center;
 `;
