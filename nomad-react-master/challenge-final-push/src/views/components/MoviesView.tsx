@@ -4,7 +4,7 @@ import {isTmdbMoviesApiType, TmdbMoviesApiType} from "../../apis/TmdbResponse";
 import {useNavigate, useParams} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
 import styled from "styled-components";
-import SimpleMovieCardView from "./cards/SimpleMovieCardView";
+import SimpleMovieCardView from "./SimpleMovieCardView";
 
 function MoviesView() {
   const {type = "popular"} = useParams();
