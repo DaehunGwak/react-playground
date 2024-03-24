@@ -3,7 +3,7 @@ import {TmdbMoviesApiType, TmdbResponse, TmdbSimpleMovie} from "../models/respon
 import {TmdbDetailResponse} from "../models/responses/TmdbDetailResponse";
 import {TmdbMovieSearchResponse} from "../models/responses/TmdbSearchResponse";
 
-const BASE_URL = "http://ec2-3-39-249-233.ap-northeast-2.compute.amazonaws.com:8080/tmdb";
+const TMDB_BASE_URL = "https://api.ordi-elastic-test.site/tmdb"
 const TIMEOUT_MS = 5000;
 
 export async function getTmdbMovies(
@@ -27,7 +27,11 @@ export async function searchTmdbMovies(
 
 async function getData(path: string) {
   try {
-    const response = await axios.get(`${BASE_URL}${path}`, { timeout: TIMEOUT_MS });
+    const response = await axios.get(
+      `${TMDB_BASE_URL}${path}`,
+      {
+        timeout: TIMEOUT_MS
+      });
     return response.data;
   } catch (e) {
     console.error("[axios] getData 중 에러가 발생했습니다. 확인 부탁드립니다.", e);
