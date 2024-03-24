@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {TMDB_MOVIES_API_TYPES} from "../../apis/TmdbResponse";
+import {TMDB_MOVIES_API_TYPES} from "../../models/responses/TmdbResponse";
 import {Link, useParams} from "react-router-dom";
 import {motion} from "framer-motion";
 

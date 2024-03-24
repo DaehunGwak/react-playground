@@ -1,20 +1,18 @@
 import {useEffect} from "react";
-import {getTmdbMovies} from "../../apis/tmdbApis";
-import {isTmdbMoviesApiType, TmdbMoviesApiType} from "../../apis/TmdbResponse";
+import {isTmdbMoviesApiType} from "../../models/responses/TmdbResponse";
 import {useNavigate, useParams} from "react-router-dom";
-import {useQuery} from "@tanstack/react-query";
 import styled from "styled-components";
 import SimpleMovieCardView from "./SimpleMovieCardView";
+import {useTmdbMoviesApiViewModel} from "../../view-models/tmdb/useTmdbApiViewModels";
+
+const DEFAULT_PAGE_NUMBER = 1;
 
 function MoviesView() {
   const {type = "popular"} = useParams();
   const navigate = useNavigate();
   const isTmdbMoviesType = isTmdbMoviesApiType(type);
-  const {data, isSuccess} = useQuery({
-    queryKey: ["tmdb-movies-api", type],
-    queryFn: async () => getTmdbMovies(type as TmdbMoviesApiType),
-    enabled: isTmdbMoviesType,
-  });
+  const {response, isSuccess} =
+    useTmdbMoviesApiViewModel(type, DEFAULT_PAGE_NUMBER, isTmdbMoviesType);
 
   useEffect(() => {
     if (!isTmdbMoviesType) {
@@ -27,7 +25,7 @@ function MoviesView() {
     <Wrapper>
       {
         isSuccess
-          ? data?.results.map(movie =>
+          ? response?.results.map(movie =>
               <SimpleMovieCardView
                 key={`simple-movie-${movie.id}`}
                 movie={movie}

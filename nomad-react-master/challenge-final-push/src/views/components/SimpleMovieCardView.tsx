@@ -1,9 +1,9 @@
-import {TmdbSimpleMovie} from "../../apis/TmdbResponse";
-import {createImageUrl} from "../../apis/tmdbUtils";
+import {TmdbSimpleMovie} from "../../models/responses/TmdbResponse";
 import {AnimatePresence, motion} from "framer-motion";
 import styled from "styled-components";
 import {useState} from "react";
 import MovieDetailModalView from "./MovieDetailModalView";
+import {createImageUrl} from "../../apis/tmdbApis";
 
 function SimpleMovieCardView({movie}: SimpleMovieCardProps) {
   const [isHovered, setHovered] = useState(false);

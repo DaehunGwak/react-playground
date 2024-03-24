@@ -1,11 +1,10 @@
 import styled from "styled-components";
-import {TmdbSimpleMovie} from "../../apis/TmdbResponse";
+import {TmdbSimpleMovie} from "../../models/responses/TmdbResponse";
 import {motion} from "framer-motion";
-import {createImageUrl} from "../../apis/tmdbUtils";
-import {useEffect} from "react";
-import {useQuery} from "@tanstack/react-query";
-import {getTmdbMovieDetail} from "../../apis/tmdbApis";
+import {createImageUrl} from "../../apis/tmdbApis";
 import {toDollarFormatNoFraction, toSpecificFractionNumberString} from "../../utils/stringUtils";
+import usePreventScrollBodyViewModel from "../../view-models/doms/usePreventScrollBodyViewModel";
+import {useTmdbMovieDetailApiViewModel} from "../../view-models/tmdb/useTmdbApiViewModels";
 
 const OVERVIEW_MAX_LENGTH = 128;
 
@@ -13,19 +12,8 @@ function MovieDetailModalView({
   movie: {id, backdrop_path, title, overview, release_date},
   removeCallback
 }: MovieDetailModalViewProps) {
-  const {data, isSuccess} = useQuery({
-    queryKey: ['tmdb-movie-detail-api', id],
-    queryFn: () => getTmdbMovieDetail(id),
-  });
-
-  useEffect(() => {
-    // 백그라운드 스크롤 가능 문제
-    // https://medium.com/@nikhil_gupta/how-to-disable-background-scroll-when-a-modal-side-drawer-is-open-in-react-js-999653a8eebb
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  });
+  const {response, isSuccess} = useTmdbMovieDetailApiViewModel(id);
+  usePreventScrollBodyViewModel();
 
   return (
     <ModalBackground
@@ -44,14 +32,14 @@ function MovieDetailModalView({
             {release_date.toString()}⎟
             {
               isSuccess
-                ? `${data.runtime}m⎟ ★ ${toSpecificFractionNumberString(data.vote_average, 1)}`
+                ? `${response!!.runtime} 분⎟★ ${toSpecificFractionNumberString(response!!.vote_average, 1)}`
                 : <GrayBox/>
             }
           </SmallText>
           <SmallText>
             {
               isSuccess
-                ? data.genres.map(genre => genre.name).join(", ")
+                ? response!!.genres.map(genre => genre.name).join(", ")
                 : <GrayBox/>
             }
           </SmallText>
@@ -63,14 +51,14 @@ function MovieDetailModalView({
           <SmallText>제작비 :
             {
               isSuccess
-                ? ` ${toDollarFormatNoFraction(data.budget)}`
+                ? ` ${toDollarFormatNoFraction(response!!.budget)}`
                 : <GrayBox/>
             }
           </SmallText>
           <SmallText>수익 :
             {
               isSuccess
-                ? ` ${toDollarFormatNoFraction(data.revenue)}`
+                ? ` ${toDollarFormatNoFraction(response!!.revenue)}`
                 : <GrayBox/>
             }
           </SmallText>
@@ -155,7 +143,7 @@ const ModalContents = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.8);
 `;
 
 const ContentEmpty = styled.div`
@@ -174,7 +162,7 @@ const Overview = styled(motion.span)`
 
 const SmallText = styled(motion.span)`
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.65);
   display: flex;
   flex-direction: row;
 `;
