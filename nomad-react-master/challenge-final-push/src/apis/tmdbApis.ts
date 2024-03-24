@@ -1,6 +1,7 @@
 import axios from "axios";
 import {TmdbMoviesApiType, TmdbResponse, TmdbSimpleMovie} from "../models/responses/TmdbResponse";
 import {TmdbDetailResponse} from "../models/responses/TmdbDetailResponse";
+import {TmdbMovieSearchResponse} from "../models/responses/TmdbSearchResponse";
 
 const BASE_URL = "http://ec2-3-39-249-233.ap-northeast-2.compute.amazonaws.com:8080/tmdb";
 const TIMEOUT_MS = 5000;
@@ -14,6 +15,14 @@ export async function getTmdbMovies(
 
 export async function getTmdbMovieDetail(id: number): Promise<TmdbDetailResponse> {
   return await getData(`/movies/${id}`);
+}
+
+export async function searchTmdbMovies(
+  query: string, page: number = 1, size: number = 20
+): Promise<TmdbMovieSearchResponse> {
+  return await getData(
+    `/movies/search?query=${query}&page=${page}&size=${size}`
+  );
 }
 
 async function getData(path: string) {

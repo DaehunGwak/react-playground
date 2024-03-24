@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import {TmdbSimpleMovie} from "../../models/responses/TmdbResponse";
 import {motion} from "framer-motion";
 import {createImageUrl} from "../../apis/tmdbApis";
 import {toDollarFormatNoFraction, toSpecificFractionNumberString} from "../../utils/stringUtils";
@@ -9,7 +8,7 @@ import {useTmdbMovieDetailApiViewModel} from "../../view-models/tmdb/useTmdbApiV
 const OVERVIEW_MAX_LENGTH = 128;
 
 function MovieDetailModalView({
-  movie: {id, backdrop_path, title, overview, release_date},
+  movie: {id, title, overview},
   removeCallback
 }: MovieDetailModalViewProps) {
   const {response, isSuccess} = useTmdbMovieDetailApiViewModel(id);
@@ -23,18 +22,21 @@ function MovieDetailModalView({
       transition={{duration: 0.5}}
     >
       <ModalCard layoutId={`movie-${id}`}>
-        <ModalImg src={createImageUrl(backdrop_path, "original")}/>
+        {isSuccess
+          ? <ModalImg src={createImageUrl(response!!.backdrop_path, "original")}/>
+          : undefined}
         <ModalCancelButton onClick={removeCallback}>X</ModalCancelButton>
         <ModalContents>
           <ContentEmpty/>
           <Title>{title}</Title>
           <SmallText>
-            {release_date.toString()}⎟
-            {
-              isSuccess
-                ? `${response!!.runtime} 분⎟★ ${toSpecificFractionNumberString(response!!.vote_average, 1)}`
-                : <GrayBox/>
-            }
+            {isSuccess
+              ? response?.release_date.toString()
+              : <GrayBox/>
+            }⎟
+            {isSuccess
+              ? `${response!!.runtime} 분⎟★ ${toSpecificFractionNumberString(response!!.vote_average, 1)}`
+              : <GrayBox/>}
           </SmallText>
           <SmallText>
             {
@@ -72,7 +74,11 @@ function MovieDetailModalView({
 export default MovieDetailModalView;
 
 interface MovieDetailModalViewProps {
-  movie: TmdbSimpleMovie;
+  movie: {
+    id: number;
+    title: string;
+    overview: string;
+  };
   removeCallback: () => void;
 }
 

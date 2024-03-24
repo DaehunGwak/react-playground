@@ -1,12 +1,14 @@
-import {Outlet} from "react-router-dom";
+import {Outlet, useLocation} from "react-router-dom";
 import MovieHeaderView from "../components/MovieHeaderView";
 import CategorySelectorView from "../components/CategorySelectorView";
 
 function HomePageView() {
+  const {pathname} = useLocation();
+
   return (
     <>
       <MovieHeaderView/>
-      <CategorySelectorView/>
+      {pathname === "/search" ? undefined : <CategorySelectorView/>}
       <Outlet/>
     </>
   );

@@ -3,6 +3,7 @@ import App from "./App";
 import HomePageView from "./views/pages/HomePageView";
 import MoviesView from "./views/components/MoviesView";
 import NotFoundPageView from "./views/pages/NotFoundPageView";
+import MovieSearchView from "./views/components/MovieSearchView";
 
 export const router = createBrowserRouter([
   {
@@ -19,9 +20,13 @@ export const router = createBrowserRouter([
             path: "",
           },
           {
+            element: <MovieSearchView/>,
+            path: "search",
+          },
+          {
             element: <MoviesView/>,
             path: ":type",
-          }
+          },
         ]
       },
     ]
