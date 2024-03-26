@@ -1,5 +1,9 @@
 // path: /
-import Avatar from "./components/avatar";
+import Avatar from "../components/avatar";
+
+export const metadata = {
+  title: 'Home'
+};
 
 export default function RootPage() {
   return (

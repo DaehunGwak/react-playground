@@ -1,5 +1,8 @@
-// path: /about-us
+export const metadata = {
+  title: 'About us'
+};
 
+// path: /about-us
 export default function AboutUsPage() {
   return (
     <>

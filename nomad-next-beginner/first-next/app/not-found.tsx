@@ -1,5 +1,9 @@
 import Navigation from "./components/navigation";
 
+export const metadata = {
+  title: 'not found!'
+};
+
 export default function NotFoundPage() {
   return (
     <>
