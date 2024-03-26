@@ -1,6 +1,11 @@
 // path: /about-us
+import Navigation from "../components/navigation";
+
 export default function AboutUsPage() {
   return (
-    <h2>about us</h2>
+    <>
+      <Navigation/>
+      <h2>about us</h2>
+    </>
   );
 }
