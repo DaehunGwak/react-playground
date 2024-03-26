@@ -10,8 +10,12 @@ export default function Navigation() {
   return (
     <nav>
       <ul>
-        <li><Link href={"/"}>Home</Link></li>
-        <li><Link href={"/about-us"}>About Us</Link></li>
+        <li><Link href={"/"}>
+          Home {path === "/" ? "👈" : undefined}
+        </Link></li>
+        <li><Link href={"/about-us"}>
+          About Us {path === "/about-us" ? "👈" : undefined}
+        </Link></li>
       </ul>
     </nav>
   )
