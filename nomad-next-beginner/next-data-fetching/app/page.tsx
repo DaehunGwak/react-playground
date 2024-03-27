@@ -1,25 +1,27 @@
-"use client";
-import {useEffect, useState} from "react";
+export const metadata = {
+  title: "Home"
+};
 
-export default function Home() {
-  const [isLoading, setLoading] = useState(false);
-  const [movies, setMovies] = useState([]);
+const BASE_URL = "https://nomad-movies.nomadcoders.workers.dev/movies";
 
-  const getMovies = async () => {
-    const response = await fetch("https://nomad-movies.nomadcoders.workers.dev/movies");
-    setMovies(await response.json());
-    setLoading(true);
-  }
+async function getMovies() {
+  // automatic caching from next
+  console.log('im fetching');
+  await new Promise(resolve => setTimeout(resolve, 5000));
+  const response = await fetch(BASE_URL);
+  const json = await response.json();
+  console.log('fetching done');
+  return json;
+}
 
-  useEffect(() => {
-    getMovies();
-  }, []);
+export default async function HomePage() {
+  const movies = await getMovies();
 
   return (
     <>
       <h1>Home Page</h1>
       <span>{
-        isLoading ? "loading" : JSON.stringify(movies)
+        JSON.stringify(movies)
       }</span>
     </>
   );
