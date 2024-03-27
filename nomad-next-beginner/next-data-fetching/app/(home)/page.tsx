@@ -1,8 +1,9 @@
+import Link from "next/link";
+import {BASE_URL} from "@/app/(constants)/api";
+
 export const metadata = {
   title: "Home"
 };
-
-const BASE_URL = "https://nomad-movies.nomadcoders.workers.dev/movies";
 
 async function getMovies() {
   // automatic caching from next
@@ -20,9 +21,13 @@ export default async function HomePage() {
   return (
     <>
       <h1>Home Page</h1>
-      <span>{
-        JSON.stringify(movies)
-      }</span>
+      <ul>
+        {movies.map((movie: {id: number, title: string}) => (
+          <li key={movie.id}>
+            <Link href={`/movies/${movie.id}`}>{movie.title}</Link>
+          </li>
+        ))}
+      </ul>
     </>
   );
 }
