@@ -3,6 +3,7 @@ import {BASE_URL} from "@/app/(constants)/api";
 async function getVideos(id: string) {
   console.log(`Fetching videos: ${Date.now()}`);
   await new Promise((resolve) => setTimeout(resolve, 5000));
+  throw new Error("get videos calling broken");
   const response = await fetch(`${BASE_URL}/${id}/videos`);
   return response.json();
 }
