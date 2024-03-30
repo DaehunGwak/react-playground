@@ -1,4 +1,9 @@
 .header {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  z-index: 1;
+  background-color: antiquewhite;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
