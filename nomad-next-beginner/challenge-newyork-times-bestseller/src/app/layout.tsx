@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import {Patrick_Hand} from "next/font/google"
-import "@/styles/globals.css";
+import "@/app/globals.css";
+import {Header} from "@/widgets/header";
 
 const patrickHand = Patrick_Hand({
   subsets: ["latin"],
@@ -20,7 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body style={patrickHand.style}>{children}</body>
+      <body style={patrickHand.style}>
+        <Header/>
+        {children}
+      </body>
     </html>
   );
 }
