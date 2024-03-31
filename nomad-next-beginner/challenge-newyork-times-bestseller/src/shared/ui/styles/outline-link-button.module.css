@@ -7,5 +7,18 @@
 }
 
 .link:hover {
-  top: -5px;
+  top: 5px;
+}
+
+.button {
+  background-color: rgb(215, 201, 183);
+  border: solid 3px #41403E;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  padding: 12px 24px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transition: box-shadow ease 0.5s;
+}
+
+.button:hover {
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 }

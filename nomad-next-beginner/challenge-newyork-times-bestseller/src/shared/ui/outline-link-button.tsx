@@ -12,7 +12,7 @@ export function OutlineLinkButton({
 }>) {
   return (
     <Link href={href} style={{fontSize}} className={styles.link}>
-      <div>
+      <div className={styles.button}>
         {text}
       </div>
     </Link>
