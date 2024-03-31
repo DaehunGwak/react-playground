@@ -25,7 +25,7 @@ export interface BestsellerListDetail {
   readonly published_date_description: string;
   readonly next_published_date: string;
   readonly previous_published_date: Date;
-  readonly display_name: string;
+  readonly display_name?: string;
   readonly normal_list_ends_at: number;
   readonly updated: string;
   readonly books: BestsellerBook[];

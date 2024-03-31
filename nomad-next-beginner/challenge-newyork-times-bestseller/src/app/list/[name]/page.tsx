@@ -8,7 +8,7 @@ export async function generateMetadata({
 }) {
   const result = await getBestsellerDetailResult(name);
   return {
-    title: result.display_name
+    title: result.display_name ?? result.list_name
   };
 }
 

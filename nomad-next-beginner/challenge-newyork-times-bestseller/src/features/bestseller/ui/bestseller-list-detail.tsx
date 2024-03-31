@@ -6,7 +6,7 @@ export async function BestsellerListDetail({name}: {name: string}) {
 
   return <div className={styles.wrapper}>
     <p className={styles.title}>
-      {result.display_name}
+      {result.display_name ?? result.list_name}
     </p>
     <div className={styles.booksWrapper}>
       {
