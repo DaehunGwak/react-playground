@@ -1,4 +1,4 @@
-import styles from "../styles/contents.module.css";
+import styles from "./styles/contents.module.css";
 import React from "react";
 
 export function Contents({children}: {children: React.ReactNode}) {

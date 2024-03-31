@@ -1,4 +1,5 @@
 import Link from "next/link";
+import styles from "./styles/outline-link-button.module.css";
 
 export function OutlineLinkButton({
   href,
@@ -10,7 +11,7 @@ export function OutlineLinkButton({
   fontSize?: string,
 }>) {
   return (
-    <Link href={href} style={{fontSize}}>
+    <Link href={href} style={{fontSize}} className={styles.link}>
       <div>
         {text}
       </div>

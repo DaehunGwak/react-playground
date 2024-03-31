@@ -1,5 +1,5 @@
 import {Contents} from "@/widgets/contents";
-import styles from "../styles/about-page.module.css";
+import styles from "./styles/about-page.module.css";
 
 export function AboutPage() {
   return (
