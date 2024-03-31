@@ -1,8 +1,8 @@
 import {OutlineLinkButton} from "@/shared/ui";
-import {getBestsellerListResults} from "@/entities/best-seller";
-import styles from "./styles/best-seller-list.module.css";
+import styles from "./styles/bestseller-list.module.css";
+import {getBestsellerListResults} from "@/entities/bestseller";
 
-export async function BestSellerList() {
+export async function BestsellerList() {
   const results = await getBestsellerListResults();
 
   return (

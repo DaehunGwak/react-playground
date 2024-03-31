@@ -1,11 +1,11 @@
 import {Suspense} from "react";
-import {BestSellerList} from "@/features/best-seller";
 import {Loading} from "@/shared/ui";
+import {BestsellerList} from "@/features/bestseller";
 
-export function BestSellerListSuspense() {
+export function BestsellerListSuspense() {
   return (
     <Suspense fallback={<Loading/>}>
-      <BestSellerList/>
+      <BestsellerList/>
     </Suspense>
   )
 }
