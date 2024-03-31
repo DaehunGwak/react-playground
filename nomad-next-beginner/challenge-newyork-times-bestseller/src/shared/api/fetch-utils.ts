@@ -4,6 +4,7 @@ export async function getData(url: string) {
     headers: {
       "Accept": "application/json"
     },
+    cache: "no-cache"
   });
   return response.json();
 }
