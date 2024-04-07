@@ -1,5 +1,5 @@
-import TailwindBasicPage from "@/src/pages/tailwind-basic/page";
+import TailwindVariablePage from "@/src/pages/tailwind-variable/page";
 
 export default function Home() {
-  return <TailwindBasicPage/>;
+  return <TailwindVariablePage/>;
 }
