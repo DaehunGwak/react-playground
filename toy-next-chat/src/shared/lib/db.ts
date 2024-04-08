@@ -1,22 +1,41 @@
 import { PrismaClient } from "@prisma/client";
 import {randomUUID} from "crypto";
 
-const db = new PrismaClient();
+const db = new PrismaClient({
+  log: [
+    {
+      emit: "stdout",
+      level: "query",
+    }
+  ],
+});
 
 async function test() {
-  const test = await db.test.create({
+  const token = await db.sMSToken.create({
     data: {
-      text: "hello prisma!"
+      token: randomUUID(),
+      user: {
+        connect: {
+          id: 1
+        }
+      }
     }
   });
-  console.log(test);
+  console.log(token);
 
-  const user = await db.user.create({
-    data: {
-      username: randomUUID(),
+  const tokens = await db.sMSToken.findMany({
+    where: {
+      user: {
+        id: 1
+      }
     },
-  });
-  console.log(user);
+    include: {
+      user: true
+    }
+  })
+  console.log(tokens);
 }
+
+test();
 
 export default db;
