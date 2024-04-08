@@ -27,6 +27,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
 
 # vercel
 .vercel
@@ -38,3 +39,7 @@ next-env.d.ts
 # ide
 .vscode
 .idea
+
+# prisma
+/prisma/database.db
+/prisma/database.db-journal
