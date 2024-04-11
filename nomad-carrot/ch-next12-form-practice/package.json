@@ -15,7 +15,10 @@
     "react-hook-form": "^7.51.2"
   },
   "devDependencies": {
+    "@types/node": "^20.12.7",
+    "@types/react": "^18.2.75",
     "eslint": "8.57.0",
-    "eslint-config-next": "14.1.4"
+    "eslint-config-next": "14.1.4",
+    "typescript": "^5.4.5"
   }
 }
