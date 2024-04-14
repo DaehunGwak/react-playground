@@ -31,9 +31,17 @@
   @apply rounded-md border-2 border-black text-xs font-semibold px-2 py-1 items-start;
 }
 
+.form-error {
+  @apply text-xs text-red-500;
+}
+
 .form-submit-button:active {
   position: relative;
   top: 2px;
   left: 2px;
   box-shadow: none;
+}
+
+.form-submit-result {
+  @apply break-words text-xs text-wrap ;
 }
