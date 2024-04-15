@@ -1,0 +1,47 @@
+.form-wrapper {
+  @apply flex flex-col;
+}
+
+.form-title {
+  @apply text-xl font-bold text-center mb-3;
+}
+
+.form-question {
+  @apply my-4 flex flex-col;
+}
+
+.form-description-text {
+  @apply text-sm font-semibold mb-2;
+}
+
+.form-option-wrapper {
+  @apply flex items-center;
+}
+
+.form-option-text {
+  @apply text-xs font-semibold my-0.5 ml-0.5;
+}
+
+.form-submit-button {
+  @apply min-w-full py-2 my-2 rounded-md border-2 border-black bg-amber-300 text-sm font-semibold hover:bg-amber-200;
+  box-shadow: 1px 2px 0 black, 2px 1px 0 black;
+}
+
+.form-input {
+  @apply rounded-md border-2 border-black text-xs font-semibold px-2 py-1 items-start;
+}
+
+.form-error {
+  @apply text-xs text-red-500;
+}
+
+.form-submit-button:active {
+  position: relative;
+  top: 2px;
+  left: 2px;
+  box-shadow: none;
+}
+
+.form-submit-result {
+  @apply break-words text-xs text-wrap ;
+}

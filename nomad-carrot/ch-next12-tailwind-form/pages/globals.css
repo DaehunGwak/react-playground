@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply bg-green-50 bg-opacity-50;
+}
+
+.index-wrapper {
+  @apply flex justify-center items-center mt-6;
+}
+
+.index-content {
+  @apply bg-red-100 w-1/2 max-w-96 p-6 rounded-3xl border-2 border-black;
+  box-shadow: 2px 4px 0 black, 4px 2px 0 black;
+}
+
+/* https://tailwindcss.com/docs/using-with-preprocessors */
+@import "../src/features/job-form/ui/job-form-feature.css";
