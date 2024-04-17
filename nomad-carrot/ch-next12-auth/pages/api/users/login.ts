@@ -1,6 +1,6 @@
 import type {NextApiRequest, NextApiResponse} from "next";
 import {withIronSessionApiRoute} from "iron-session/next";
-import {ironSessionOptions} from "../../../src/shared/libs/iron-session-options";
+import {ironSessionOptions} from "../../../src/shared/models/iron-session-options";
 import {findUserByEmail} from "../../../src/entities/user";
 
 async function handler(
@@ -18,10 +18,7 @@ async function handler(
       return;
     }
 
-    req.session.user = {
-      name: user!.name,
-      email: user!.email,
-    }
+    req.session.user = {id: user.id};
     await req.session.save();
 
     res.status(201).end();

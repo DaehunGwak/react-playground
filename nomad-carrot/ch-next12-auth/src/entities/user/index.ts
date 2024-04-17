@@ -1,2 +1,2 @@
 export {createUser, findUserByEmail} from "./api/user-db";
-export type {LoginFailResponse} from "./model/responses";
+export type {LoginFailResponse, UserMeResponse} from "./model/responses";
