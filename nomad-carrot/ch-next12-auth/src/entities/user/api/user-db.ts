@@ -1,4 +1,4 @@
-import db from "../../../libs/db";
+import db from "../../../shared/libs/db";
 
 export async function createUser(name: string, email: string) {
   await db.user.create({

@@ -2,14 +2,24 @@ import {NextPage} from "next";
 import Head from "next/head";
 import {useRouter} from "next/navigation";
 import {useForm} from "react-hook-form";
+import {LoginFailResponse} from "../../src/entities/user";
 
 const LogInPage: NextPage = () => {
   const router = useRouter();
   const {register, handleSubmit} = useForm<LogInForm>();
 
-  const loginAndRedirect = (data: LogInForm) => {
-    console.log(data);
-    // TODO: 로그인 검증 로직
+  const loginAndRedirect = async (requestBody: LogInForm) => {
+    const response = await fetch("/api/users/login", {
+      method: "POST",
+      body: JSON.stringify(requestBody)
+    });
+
+    if (response.status === 400) {
+      const failResponse: LoginFailResponse = await response.json()
+      alert(failResponse.message);
+      return;
+    }
+
     router.replace("/");
   };
 
@@ -35,7 +45,7 @@ const LogInPage: NextPage = () => {
         </form>
       </main>
     </div>
-  )
+  );
 }
 
 interface LogInForm {
