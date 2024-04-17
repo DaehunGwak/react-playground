@@ -16,9 +16,14 @@ async function handler(
     }
 
     const user = await findUserById(id);
+    if (user === null) {
+      res.status(400).end();
+      return;
+    }
+
     res.status(200).json({
-      name: user!.name,
-      email: user!.email,
+      name: user.name,
+      email: user.email,
     });
   }
   res.status(404).end();
