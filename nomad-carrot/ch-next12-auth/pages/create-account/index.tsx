@@ -7,10 +7,19 @@ const CreateAccountPage: NextPage = () => {
   const router = useRouter();
   const {register, handleSubmit} = useForm<CreateAccountForm>()
 
-  const createUserAndRedirect = (data: CreateAccountForm) => {
-    console.log(data);
-    alert("Account created! Please log in!");
-    router.push("/log-in");
+  const createUserAndRedirect = async (data: CreateAccountForm) => {
+    const response = await fetch("/api/users", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+
+    if (response.status === 201) {
+      alert("Account created! Please log in!");
+      router.push("/log-in");
+      return;
+    }
+
+    alert("Account creation failed.. Please retry :)");
   };
 
   return (

@@ -9,7 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "iron-session": "^8.0.1",
+    "@prisma/client": "^5.12.1",
+    "iron-session": "^6.0.5",
     "next": "14.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -22,6 +23,7 @@
     "@types/react-dom": "18.2.25",
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.1",
+    "prisma": "^5.12.1",
     "typescript": "5.4.5"
   }
 }
