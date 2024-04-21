@@ -1,0 +1,1 @@
+export {default as DogWidget} from "./ui/dog-widget";
