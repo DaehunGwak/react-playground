@@ -1,33 +1,37 @@
 'use client';
 
-import useSWR from "swr";
-import fetcher from "@/src/shared/libs/fetcher";
-import {DogResponse} from "@/src/features/dog/model/response";
-
-const DOG_URL = "https://dogs-api.nomadcoders.workers.dev";
+import useDogSwr from "@/src/features/dog/api/use-dog-swr";
 
 export default function DogFeature() {
-  const {isLoading, data} = useSWR<DogResponse>(DOG_URL, fetcher);
+  const {isLoading, data, mutate} = useDogSwr();
+
+  if (isLoading) {
+    return (
+      <div>loading...</div>
+    );
+  }
 
   return (
-    <>{
-      isLoading
-        ? "loading..."
-        : <div className="flex flex-col justify-center items-center gap-6">
-          <video
-            src={data!.url}
-            controls
-            className="w-64 h-64"
-          />
-          <div className="flex flex-row gap-3 flex-wrap justify-center items-center">
-            <button className="w-52 p-3 rounded-lg shadow-lg active:shadow-none">
-              New Dog!
-            </button>
-            <button className="w-52 p-3 rounded-lg shadow-lg active:shadow-none bg-sky-400 text-white">
-              Like
-            </button>
-          </div>
-        </div>
-    }</>
+    <div className="flex flex-col justify-center items-center gap-6">
+      <video
+        src={data!.url}
+        controls
+        className="w-64 h-64"
+      />
+      <div className="flex flex-row gap-3 flex-wrap justify-center items-center">
+        <button
+          onClick={() => mutate()}
+          className="w-52 p-3 rounded-lg shadow-lg active:shadow-none"
+        >
+          New Dog!
+        </button>
+        <button
+          onClick={() => mutate({...data!, isLiked: !data!.isLiked}, {revalidate: false})}
+          className="w-52 p-3 rounded-lg shadow-lg active:shadow-none bg-sky-400 text-white"
+        >
+          {data!.isLiked ? "Unlike" : "Like"}
+        </button>
+      </div>
+    </div>
   );
 }
