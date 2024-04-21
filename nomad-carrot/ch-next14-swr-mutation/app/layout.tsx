@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type {Metadata} from "next";
+import {Inter} from "next/font/google";
 import "./globals.css";
 import {WoofHeader} from "@/src/widgets/header";
+import {Providers} from "@/app/providers";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({subsets: ["latin"]});
 
 export const metadata: Metadata = {
   title: "Mutation: Nomad Challenge",
@@ -11,16 +12,19 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
-}: Readonly<{
+                                     children,
+                                   }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
-    <html lang="en">
-      <body className={`${inter.className} `}>
-        <WoofHeader/>
-        {children}
-      </body>
+    <html lang="en" suppressHydrationWarning>
+    <body className={`${inter.className} dark:bg-black`}>
+    <Providers>
+      <WoofHeader/>
+      {children}
+    </Providers>
+    </body>
     </html>
   );
 }
