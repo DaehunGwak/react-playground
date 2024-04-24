@@ -1,4 +1,4 @@
-import {LoginPage} from "@/src/pages/auth";
+import {LoginPage} from "@/src/page/auth";
 
 export default function LoginAppPage() {
   return (
