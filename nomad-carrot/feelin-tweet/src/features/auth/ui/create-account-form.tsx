@@ -2,8 +2,7 @@
 
 import {useForm} from "react-hook-form";
 import {useState} from "react";
-import {AuthError} from "@supabase/auth-js";
-import {signupEmailAndPasssword} from "@/src/entities/supabase-auth";
+import {fetchPostSignupByEmail} from "@/src/entities/supabase-auth";
 import {useRouter} from "next/navigation";
 
 export default function CreateAccountForm() {
@@ -13,15 +12,18 @@ export default function CreateAccountForm() {
     formState: {isSubmitting, errors} ,
     getValues,
   } = useForm<LoginFormData>();
-  const [authError, setAuthError] = useState<AuthError | null>();
+  const [authError, setAuthError] = useState<string>();
   const router = useRouter();
 
   const signup = async ({email, password}: LoginFormData) => {
-    const {error} = await signupEmailAndPasssword(email, password);
-    setAuthError((_) => error);
-    if (!error) {
-      router.push("/log-in");
+    const response = await fetchPostSignupByEmail(email, password);
+
+    if (response.redirected) {
+      router.push(response.url);
     }
+
+    const responseJson = await response.json();
+    setAuthError((_) => responseJson.error);
   }
 
   return (
@@ -95,7 +97,7 @@ export default function CreateAccountForm() {
       </button>
       {authError
         ? <span className="text-red-400 text-xs w-full text-center">
-          {authError.message}
+          {authError}
         </span>
         : undefined}
     </form>

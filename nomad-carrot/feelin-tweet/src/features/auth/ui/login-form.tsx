@@ -1,9 +1,9 @@
 'use client';
 
 import {useForm} from "react-hook-form";
-import {loginEmailAndPassword} from "@/src/entities/supabase-auth";
 import {useState} from "react";
-import {AuthError} from "@supabase/auth-js";
+import {useRouter} from "next/navigation";
+import {fetchPostLoginByEmail} from "@/src/entities/supabase-auth";
 
 export default function LoginForm() {
   const {
@@ -11,11 +11,19 @@ export default function LoginForm() {
     handleSubmit,
     formState: {isSubmitting, errors} ,
   } = useForm<LoginFormData>();
-  const [authError, setAuthError] = useState<AuthError | null>();
+  const [authError, setAuthError] = useState<string>();
+  const router = useRouter();
 
   const login = async ({email, password}: LoginFormData) => {
-    const {error} = await loginEmailAndPassword(email, password);
-    setAuthError((_) => error);
+    const response = await fetchPostLoginByEmail(email, password);
+
+    if (response.redirected) {
+      router.replace(response.url);
+      return;
+    }
+
+    const responseJson = await response.json();
+    setAuthError(responseJson.error);
   }
 
   return (
@@ -66,7 +74,7 @@ export default function LoginForm() {
       </button>
       {authError
         ? <span className="text-red-400 text-xs w-full text-center">
-          {authError.message}
+          {authError}
         </span>
         : undefined}
     </form>

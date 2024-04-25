@@ -16,8 +16,6 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL("/log-in", req.url));
   }
 
-  console.log(session);
-
   return res;
 }
 
