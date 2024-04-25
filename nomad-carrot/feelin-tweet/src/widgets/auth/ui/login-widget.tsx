@@ -1,6 +1,6 @@
 import FeelinTitle from "@/src/shared/ui/feelin-title";
 import Link from "next/link";
-import {LoginForm} from "@/src/features/auth";
+import {GoogleLoginButton, LoginForm} from "@/src/features/auth";
 
 export default function LoginWidget() {
   return (
@@ -13,6 +13,7 @@ export default function LoginWidget() {
       >
         Create Account
       </Link>
+      <GoogleLoginButton/>
     </div>
   );
 }
