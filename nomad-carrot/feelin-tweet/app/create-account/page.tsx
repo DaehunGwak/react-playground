@@ -1,10 +1,7 @@
-import FeelinTitle from "@/src/shared/ui/feelin-title";
+import {CreateAccountPage} from "@/src/page/auth";
 
-export default function CreateAccountPage() {
+export default function CreateAccountAppPage() {
   return (
-    <div className="flex flex-col">
-      <FeelinTitle/>
-      create-account
-    </div>
+    <CreateAccountPage/>
   );
 }

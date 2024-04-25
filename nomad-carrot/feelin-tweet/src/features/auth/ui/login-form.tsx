@@ -44,8 +44,8 @@ export default function LoginForm() {
         {...register("password", {
           required: "Please enter your password.",
           minLength: {
-            value: 4,
-            message: "Please enter at least 4 characters."
+            value: 6,
+            message: "Please enter at least 6 characters."
           }
         })}
         type="password"

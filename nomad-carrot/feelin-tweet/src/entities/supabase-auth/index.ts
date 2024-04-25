@@ -1,1 +1,1 @@
-export {loginEmailAndPassword} from "./api/email-password";
+export {loginEmailAndPassword, signupEmailAndPasssword} from "./api/email-password";
