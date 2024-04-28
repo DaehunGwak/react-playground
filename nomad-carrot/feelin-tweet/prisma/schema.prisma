@@ -43,6 +43,6 @@ model Like {
   tweet     Tweet?   @relation(fields: [tweetId], references: [id])
   createdAt DateTime @default(now())
 
+  @@unique([userId, tweetId])
   @@index([tweetId])
-  @@index([userId, tweetId])
 }

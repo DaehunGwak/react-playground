@@ -1,6 +1,11 @@
-import {TweetContentsColumn, TweetDetail, TweetLikeButton, TweetProfileColumn} from "@/src/entities/tweet";
+import {
+  TweetContentsColumn,
+  TweetLikeButton,
+  TweetProfileColumn,
+  TweetWithProfile
+} from "@/src/entities/tweet";
 
-export default function TweetDetailCard({tweet}: {tweet: TweetDetail}) {
+export default function TweetDetailCard({tweet}: {tweet: TweetWithProfile}) {
   const profile = tweet.profile!;
 
   return (
@@ -8,7 +13,7 @@ export default function TweetDetailCard({tweet}: {tweet: TweetDetail}) {
       <TweetProfileColumn profile={profile} createdAt={tweet.createdAt}/>
       <TweetContentsColumn text={tweet.text} imageUrls={tweet.imageUrls}/>
       <div className="flex flex-row gap-4 justify-end w-full">
-        <TweetLikeButton likes={tweet.likes}/>
+        <TweetLikeButton tweetId={tweet.id}/>
       </div>
     </div>
   );

@@ -7,9 +7,7 @@ export type TweetWithProfile = TweetGetPayload<{
   }
 }>;
 
-export type TweetDetail = TweetGetPayload<{
-  include: {
-    likes: true,
-    profile: true,
-  }
-}>;
+export type TweetMyLike = {
+  myLikeId?: number | null,
+  likeCount: number,
+};
