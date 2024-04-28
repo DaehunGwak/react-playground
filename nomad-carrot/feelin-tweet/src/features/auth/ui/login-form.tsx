@@ -27,7 +27,7 @@ export default function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(login, console.log)} className="flex flex-col w-full gap-1">
+    <form onSubmit={handleSubmit(login)} className="flex flex-col w-full gap-1">
       <label htmlFor="email" className="text-black text-sm mt-1">
         E-mail
       </label>

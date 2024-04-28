@@ -1,1 +1,4 @@
-export {readTweets} from "./api/repository";
+export {
+  readTweets,
+  createTweet,
+} from "./api/repository";

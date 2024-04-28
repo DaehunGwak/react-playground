@@ -1,6 +1,5 @@
 import {NextRequest, NextResponse} from "next/server";
 import {readUserByCookie, readUserById} from "@/src/entities/supabase-auth";
-import {cookies} from "next/headers";
 import {readProfile, UserResponseFactory} from "@/src/entities/profile";
 import {User} from "@supabase/auth-js";
 
@@ -13,7 +12,7 @@ export async function GET(
 
   let user: User | null;
   if (id === PATH_PARAM_ME) {
-    user = await readUserByCookie(cookies());
+    user = await readUserByCookie();
   } else {
     user = await readUserById(id);
   }

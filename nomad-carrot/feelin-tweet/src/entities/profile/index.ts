@@ -5,7 +5,6 @@ export {
 } from "./api/repository";
 
 export {
-  fetchGetUserMe,
   fetchPostProfile
 } from "./api/fetch";
 

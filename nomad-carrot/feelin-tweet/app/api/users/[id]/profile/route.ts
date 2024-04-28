@@ -1,5 +1,4 @@
 import {NextRequest, NextResponse} from "next/server";
-import {cookies} from "next/headers";
 import {readUserByCookie} from "@/src/entities/supabase-auth";
 import {createProfile} from "@/src/entities/profile";
 
@@ -13,7 +12,7 @@ export async function POST(
     return NextResponse.json(null, {status: 404});
   }
 
-  const user = await readUserByCookie(cookies());
+  const user = await readUserByCookie();
   if (user === null) {
     return NextResponse.json({error: "Authentication failed"}, {status: 401});
   }

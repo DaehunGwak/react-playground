@@ -1,11 +1,10 @@
 "use server";
 
-import {cookies} from "next/headers";
 import {readUserByCookie} from "@/src/entities/supabase-auth";
 import {readProfile} from "@/src/entities/profile";
 
 export async function getUserProfileByCookie() {
-    const user = await readUserByCookie(cookies());
+    const user = await readUserByCookie();
     if (!user) {
       return null;
     }
@@ -14,4 +13,3 @@ export async function getUserProfileByCookie() {
       profile: await readProfile(user.id),
     };
 }
-
