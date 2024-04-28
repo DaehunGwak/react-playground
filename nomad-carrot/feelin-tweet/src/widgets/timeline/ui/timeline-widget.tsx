@@ -1,13 +1,10 @@
-import FeelinTitle from "@/src/shared/ui/feelin-title";
-import {LogoutButton} from "@/src/features/auth";
+import {readTweets} from "@/src/entities/tweet";
 
-export default function TimelineWidget() {
-  const tweets = ["test"];
+export default async function TimelineWidget() {
+  const tweets = await readTweets();
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center justify-between p-24">
-      <FeelinTitle/>
-      <LogoutButton/>
+    <div className="w-full min-h-screen flex flex-col items-center pt-28 px-2">
       <span>{JSON.stringify(tweets)}</span>
     </div>
   );
