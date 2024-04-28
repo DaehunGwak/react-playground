@@ -2,10 +2,11 @@
 
 import {useForm} from "react-hook-form";
 import {readUserByCookie} from "@/src/entities/supabase-auth";
-import {createTweet} from "@/src/entities/tweet";
+import {createTweet, TweetWithProfileAndLikeCount} from "@/src/entities/tweet";
 import {BaseSyntheticEvent, ChangeEvent} from "react";
+import {KeyedMutator} from "swr";
 
-export default function TweetNewForm() {
+export default function TweetNewForm({mutateTweets}: {mutateTweets: KeyedMutator<TweetWithProfileAndLikeCount[]>}) {
   const {
     register,
     handleSubmit,
@@ -19,6 +20,7 @@ export default function TweetNewForm() {
   const submitTweet = async ({text}: TweetNewFormData, event?: BaseSyntheticEvent) => {
     const user = await readUserByCookie();
     await createTweet(text, user!.id);
+    await mutateTweets();
 
     reset();
 

@@ -2,7 +2,7 @@
 
 import {db} from "@/src/shared/libs";
 import {Like, Tweet} from "@prisma/client";
-import {TweetMyLike, TweetWithProfile} from "@/src/entities/tweet";
+import {TweetMyLike, TweetWithProfile, TweetWithProfileAndLikeCount} from "@/src/entities/tweet";
 import {readUserByCookie} from "@/src/entities/supabase-auth";
 
 export async function readTweets(): Promise<Tweet[]> {
@@ -20,6 +20,27 @@ export async function readTweetsWithProfile(): Promise<TweetWithProfile[]> {
     },
     include: {
       profile: true
+    },
+    orderBy: [
+      {createdAt: "desc"}
+    ],
+  });
+}
+
+export async function readTweetsWithProfileAndLikeCount(): Promise<TweetWithProfileAndLikeCount[]> {
+  return db.tweet.findMany({
+    where: {
+      profile: {
+        userId: {not: undefined}
+      }
+    },
+    include: {
+      profile: true,
+      _count: {
+        select: {
+          likes: true,
+        }
+      }
     },
     orderBy: [
       {createdAt: "desc"}

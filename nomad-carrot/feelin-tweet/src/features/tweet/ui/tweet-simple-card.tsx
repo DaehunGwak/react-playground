@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {TweetContentsColumn, TweetLikeColumn, TweetProfileColumn, TweetWithProfile} from "@/src/entities/tweet";
 
-export default function TweetSimpleCard({tweet}: { tweet: TweetWithProfile }) {
+export default function TweetSimpleCard({tweet, likeCount}: { tweet: TweetWithProfile, likeCount: number }) {
   const profile = tweet.profile!;
 
   return (
@@ -13,7 +13,7 @@ export default function TweetSimpleCard({tweet}: { tweet: TweetWithProfile }) {
           <TweetContentsColumn text={tweet.text} imageUrls={tweet.imageUrls}/>
         </div>
         <div className="flex flex-col justify-end">
-          <TweetLikeColumn tweetId={tweet.id}/>
+          <TweetLikeColumn likeCount={likeCount}/>
         </div>
       </div>
     </Link>

@@ -4,6 +4,7 @@ export {
   readTweetWithProfile,
   readTweetLikesCount,
   readTweetLikesCountWithMyLike,
+  readTweetsWithProfileAndLikeCount,
   createTweet,
   createTweetLike,
   deleteTweetLike,
@@ -12,6 +13,7 @@ export {
 export {
   type TweetWithProfile,
   type TweetMyLike,
+  type TweetWithProfileAndLikeCount,
 } from "./model/db";
 
 export {default as TweetProfileColumn} from "./ui/tweet-profile-column";
