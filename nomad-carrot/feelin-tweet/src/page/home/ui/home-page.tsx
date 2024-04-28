@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import {fetchGetUserMe, UserResponse} from "@/src/entities/profile";
 import {TimelineWidget} from "@/src/widgets/timeline";
 import {useRouter} from "next/navigation";
+import {HeaderWidget} from "@/src/widgets/header";
 
 export default function HomePage() {
   const [response, setResponse] = useState<UserResponse>();
@@ -18,7 +19,7 @@ export default function HomePage() {
       fetchGetUserMe()
         .then(userMe => setResponse(userMe.result!));
     }
-  }, [response]);
+  }, [response, router]);
 
   if (response === undefined || response.profile === null) {
     return (
@@ -30,6 +31,7 @@ export default function HomePage() {
 
   return (
     <div className="w-screen min-h-screen">
+      <HeaderWidget/>
       <TimelineWidget/>
     </div>
   );
