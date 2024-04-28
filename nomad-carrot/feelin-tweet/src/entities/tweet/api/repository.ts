@@ -9,6 +9,22 @@ export async function readTweets(): Promise<Tweet[]> {
   });
 }
 
+export async function readTweetsWithProfile() {
+  return db.tweet.findMany({
+    where: {
+      profile: {
+        userId: {not: undefined}
+      }
+    },
+    include: {
+      profile: true
+    },
+    orderBy: [
+      {createdAt: "desc"}
+    ],
+  });
+}
+
 export async function createTweet(text: string, userId: string): Promise<Tweet> {
   return db.tweet.create({
     data: {

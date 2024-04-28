@@ -19,6 +19,7 @@ model Profile {
   userId   String  @id @db.Uuid
   nickname String  @unique
   imageUrl String?
+  Tweet    Tweet[]
 }
 
 model Tweet {
@@ -26,6 +27,7 @@ model Tweet {
   text      String   @db.Text
   imageUrls String[] @default([])
   userId    String   @db.Uuid
+  profile   Profile? @relation(fields: [userId], references: [userId])
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
   likes     Like[]

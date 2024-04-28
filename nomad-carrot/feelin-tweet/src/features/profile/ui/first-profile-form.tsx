@@ -2,7 +2,7 @@
 
 import {fetchPostProfile, UserDto} from "@/src/entities/profile";
 import {useForm} from "react-hook-form";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useRouter} from "next/navigation";
 
 export default function FirstProfileForm({user}: {user: UserDto}) {
@@ -11,19 +11,29 @@ export default function FirstProfileForm({user}: {user: UserDto}) {
     handleSubmit,
     formState: {errors, isSubmitting},
   } = useForm<FirstProfileFormData>();
-  const [responseError, setResponseError] = useState<string>();
+  const [response, setResponse] = useState<Response>();
+  const [responseError, setResponseError] = useState<string>()
   const router = useRouter();
+
+  useEffect(() => {
+    if (response && response.status === 201) {
+      router.replace("/");
+      router.refresh();
+    }
+  }, [response, router]);
 
   const createProfile = async ({nickname}: FirstProfileFormData) => {
     const response = await fetchPostProfile(nickname);
+    setResponse(response);
 
     if (response.status === 201) {
       router.replace("/");
+      router.refresh();
       return;
     }
 
-    const responseJson = await response.json();
-    setResponseError(responseJson.error);
+    const json = await response.json();
+    setResponseError(json.error);
   }
 
   return (

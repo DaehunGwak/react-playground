@@ -38,7 +38,7 @@ export default function TweetNewForm() {
 
   return (
     <div
-      className="w-full max-w-screen-sm flex flex-col rounded-lg shadow-gray-400 shadow-lg p-4"
+      className="w-full max-w-screen-sm flex flex-col rounded-lg shadow-gray-400 shadow-md p-4"
     >
       <form
         onSubmit={handleSubmit(submitTweet)}
