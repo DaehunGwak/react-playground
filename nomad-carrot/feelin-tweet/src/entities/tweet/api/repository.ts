@@ -2,6 +2,7 @@
 
 import {db} from "@/src/shared/libs";
 import {Tweet} from "@prisma/client";
+import {TweetDetail, TweetWithProfile} from "@/src/entities/tweet";
 
 export async function readTweets(): Promise<Tweet[]> {
   return db.tweet.findMany({
@@ -9,7 +10,7 @@ export async function readTweets(): Promise<Tweet[]> {
   });
 }
 
-export async function readTweetsWithProfile() {
+export async function readTweetsWithProfile(): Promise<TweetWithProfile[]> {
   return db.tweet.findMany({
     where: {
       profile: {
@@ -22,6 +23,18 @@ export async function readTweetsWithProfile() {
     orderBy: [
       {createdAt: "desc"}
     ],
+  });
+}
+
+export async function readTweetDetail(tweetId: number): Promise<TweetDetail | null> {
+  return db.tweet.findUnique({
+    where: {
+      id: tweetId
+    },
+    include: {
+      likes: true,
+      profile: true,
+    },
   });
 }
 
