@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "postgresql"
+  url          = env("DATABASE_URL")
+  directUrl    = env("DIRECT_URL")
+  relationMode = "prisma"
+}
+
+model Profile {
+  userId   String  @id @db.Uuid
+  nickname String  @unique
+  imageUrl String?
+  Tweet    Tweet[]
+}
+
+model Tweet {
+  id        Int      @id @default(autoincrement())
+  text      String   @db.Text
+  imageUrls String[] @default([])
+  userId    String   @db.Uuid
+  profile   Profile? @relation(fields: [userId], references: [userId])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+  likes     Like[]
+
+  @@index([userId, createdAt])
+  @@index([createdAt])
+}
+
+model Like {
+  id        Int      @id @default(autoincrement())
+  userId    String   @db.Uuid
+  tweetId   Int?
+  tweet     Tweet?   @relation(fields: [tweetId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([userId, tweetId])
+  @@index([tweetId])
+}
